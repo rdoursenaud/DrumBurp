@@ -16,12 +16,12 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on 31 Jul 2010
 
 @author: Mike Thomas
 
-'''
+"""
 import webbrowser
 from StringIO import StringIO
 from ui_drumburp import Ui_DrumBurpWindow
@@ -57,14 +57,14 @@ class FakeQSettings(object):
 
 
 class DrumBurp(QMainWindow, Ui_DrumBurpWindow):
-    '''
+    """
     classdocs
-    '''
+    """
 
     def __init__(self, parent = None, fakeStartup = False, filename = None):
-        '''
+        """
         Constructor
-        '''
+        """
         self._fakeStartup = fakeStartup
         super(DrumBurp, self).__init__(parent)
         self._state = None

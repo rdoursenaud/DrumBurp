@@ -16,12 +16,12 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on 16 Apr 2011
 
 @author: Mike Thomas
 
-'''
+"""
 
 import itertools
 from Counter import CounterRegistry
@@ -29,12 +29,12 @@ from DBConstants import BEAT_COUNT
 import DBErrors
 
 class Beat(object):
-    '''A Beat is a measured instance of a Counter. 
-    
-    A Beat may be less than the full length of the corresponding Counter to 
+    """A Beat is a measured instance of a Counter.
+
+    A Beat may be less than the full length of the corresponding Counter to
     reflect partial beats at the end of a Measure. A sequence of Beats makes
     up a MeasureCount.
-    '''
+    """
     def __init__(self, counter, numTicks = None):
         self.counter = counter
         if numTicks is None:

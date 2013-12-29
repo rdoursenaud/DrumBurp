@@ -16,12 +16,12 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on 16 Apr 2011
 
 @author: Mike Thomas
 
-'''
+"""
 from PyQt4 import QtGui
 
 from QMenuIgnoreCancelClick import QMenuIgnoreCancelClick
@@ -35,9 +35,9 @@ from DBFSMEvents import MenuSelect, RepeatNotes, EditMeasureProperties
 
 class QMeasureContextMenu(QMenuIgnoreCancelClick):
     def __init__(self, qScore, qmeasure, firstNote, alternateText):
-        '''
+        """
         Constructor
-        '''
+        """
         super(QMeasureContextMenu, self).__init__(qScore)
         self._qmeasure = qmeasure
         self._np = firstNote

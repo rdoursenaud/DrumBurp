@@ -16,28 +16,28 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on 5 Jan 2011
 
 @author: Mike Thomas
 
-'''
+"""
 
 from PyQt4 import QtGui, QtCore
 from Data.NotePosition import NotePosition
 from DBFSMEvents import MeasureLineContext
 
 class QMeasureLine(QtGui.QGraphicsItem):
-    '''
+    """
     classdocs
-    '''
+    """
 
 
     def __init__(self, qScore, lastMeasure, nextMeasure, index,
                  staffIndex, parent = None):
-        '''
+        """
         Constructor
-        '''
+        """
         super(QMeasureLine, self).__init__(parent)
         self._qStaff = parent
         self._qScore = qScore

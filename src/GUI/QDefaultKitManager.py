@@ -16,12 +16,12 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on 13 Oct 2012
 
 @author: Mike Thomas
 
-'''
+"""
 
 from PyQt4 import QtGui, QtCore
 from ui_defaultKitManager import Ui_DefaulKitManager

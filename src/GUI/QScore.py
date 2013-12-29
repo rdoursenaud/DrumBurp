@@ -16,12 +16,12 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on 4 Jan 2011
 
 @author: Mike Thomas
 
-'''
+"""
 
 from PyQt4 import QtGui, QtCore
 import itertools
@@ -132,15 +132,15 @@ def _metaDataProperty(varname):
     return property(fget = _getData, fset = _setData)
 
 class QScore(QtGui.QGraphicsScene):
-    '''
+    """
     classdocs
-    '''
+    """
 
 
     def __init__(self, parent):
-        '''
+        """
         Constructor
-        '''
+        """
         super(QScore, self).__init__(parent)
         self._scale = 1
         self._qStaffs = []

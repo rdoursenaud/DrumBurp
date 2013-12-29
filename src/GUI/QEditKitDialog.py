@@ -16,12 +16,12 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on 26 Jan 2011
 
 @author: Mike Thomas
 
-'''
+"""
 from PyQt4.QtGui import (QDialog, QRadioButton, QFileDialog, QDesktopServices,
                          QMessageBox, QInputDialog, QColor, QDialogButtonBox)
 from ui_editKit import Ui_editKitDialog
@@ -44,14 +44,14 @@ _BAD_ABBR_COLOR = QColor("red")
 _GOOD_ABBR_COLOR = QColor("black")
 
 class QEditKitDialog(QDialog, Ui_editKitDialog):
-    '''
+    """
     classdocs
-    '''
+    """
 
     def __init__(self, kit, emptyDrums = None, parent = None, directory = None):
-        '''
+        """
         Constructor
-        '''
+        """
         super(QEditKitDialog, self).__init__(parent)
         self.setupUi(self)
         self.muteButton.setChecked(DBMidi.isMuted())

@@ -16,21 +16,21 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on 12 Dec 2010
 
 @author: Mike Thomas
 
-'''
+"""
 
 from Drum import Drum, HeadData
 from DefaultKits import STEM_DOWN, STEM_UP, NAMED_DEFAULTS
 from DBErrors import DuplicateDrumError, NoSuchDrumError
 
 class DrumKit(object):
-    '''
+    """
     classdocs
-    '''
+    """
     UP = STEM_UP
     DOWN = STEM_DOWN
 

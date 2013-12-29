@@ -16,12 +16,12 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on 12 Dec 2010
 
 @author: Mike Thomas
 
-'''
+"""
 import copy
 
 from DBConstants import DRUM_ABBR_WIDTH
@@ -105,9 +105,9 @@ _DEFAULTEFFECT = {"x":"normal",
 
 
 class Drum(object):
-    '''
+    """
     classdocs
-    '''
+    """
     def __init__(self, name, abbr, head, locked = False):
         self.name = name
         self.abbr = abbr

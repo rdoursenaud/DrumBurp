@@ -16,11 +16,11 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on Feb 26, 2012
 
 @author: Mike
-'''
+"""
 
 from QMenuIgnoreCancelClick import QMenuIgnoreCancelClick
 from DBCommands import (SetSectionEndCommand, SetLineBreakCommand,

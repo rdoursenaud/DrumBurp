@@ -16,11 +16,11 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on 7 Oct 2012
 
 @author: Mike Thomas
-'''
+"""
 
 import DBErrors
 

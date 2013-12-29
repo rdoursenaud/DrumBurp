@@ -16,11 +16,11 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on 12 Dec 2010
 
 @author: Mike Thomas
-'''
+"""
 import unittest
 from cStringIO import StringIO
 from Data import DrumKit

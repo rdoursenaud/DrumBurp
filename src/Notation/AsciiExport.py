@@ -16,11 +16,11 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on Dec 15, 2012
 
 @author: Mike Thomas
-'''
+"""
 from Data.DBConstants import (REPEAT_EXTENDER, BARLINE, DRUM_ABBR_WIDTH,
                               EMPTY_NOTE, REPEAT_END, REPEAT_STARTER,
                               ALTERNATE_EXTENDER)

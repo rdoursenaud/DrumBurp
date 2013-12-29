@@ -1,8 +1,8 @@
-'''
+"""
 Created on 18 Mar 2012
 
 @author: Mike Thomas
-'''
+"""
 APPNAME = "DrumBurp"
 FULL_RELEASE = True
 _ALPHA_STRING = "a"

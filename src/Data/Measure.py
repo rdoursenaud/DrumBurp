@@ -16,12 +16,12 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on 12 Dec 2010
 
 @author: Mike Thomas
 
-'''
+"""
 
 from collections import defaultdict
 from DBConstants import EMPTY_NOTE, BAR_TYPES
@@ -113,9 +113,9 @@ class MeasureInfo(object):
         self.repeatCount = 1
 
 class Measure(object):
-    '''
+    """
     classdocs
-    '''
+    """
 
     def __init__(self, width = 0):
         self._width = width

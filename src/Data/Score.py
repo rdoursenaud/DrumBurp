@@ -16,12 +16,12 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on 12 Dec 2010
 
 @author: Mike Thomas
 
-'''
+"""
 
 import DrumKit
 from Staff import Staff
@@ -42,18 +42,18 @@ from StringIO import StringIO
 CURRENT_FILE_FORMAT = 0
 
 class InconsistentRepeats(StandardError):
-    "Bad repeat data"
+    """Bad repeat data"""
 
 class Score(object):
-    '''
+    """
     classdocs
-    '''
+    """
 
 
     def __init__(self):
-        '''
+        """
         Constructor
-        '''
+        """
         self._staffs = []
         self.drumKit = DrumKit.DrumKit()
         self._callBack = None

@@ -16,19 +16,19 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on 5 Dec 2010
 
 @author: Mike Thomas
 
-'''
+"""
 from PyQt4 import QtGui, QtCore
 
 
 class ScoreView(QtGui.QGraphicsView):
-    '''
+    """
     classdocs
-    '''
+    """
 
     def __init__(self, parent = None):
         super(ScoreView, self).__init__(parent)

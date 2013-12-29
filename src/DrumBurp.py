@@ -16,11 +16,11 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on 31 Jul 2010
 
 @author: Mike Thomas
-'''
+"""
 import sys
 import optparse
 from PyQt4.QtGui import QApplication

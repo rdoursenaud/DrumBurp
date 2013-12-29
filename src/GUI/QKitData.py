@@ -16,18 +16,18 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on 13 Mar 2011
 
 @author: Mike Thomas
-'''
+"""
 
 from QGraphicsListData import QGraphicsListData
 
 class QKitData(QGraphicsListData):
-    '''
+    """
     classdocs
-    '''
+    """
 
     _editName = "kit information"
 

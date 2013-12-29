@@ -16,27 +16,27 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on 17 Apr 2011
 
 @author: Mike Thomas
 
-'''
+"""
 import copy
 from PyQt4.QtGui import QWidget
 from PyQt4.QtCore import pyqtSignal
 from ui_measureTabs import Ui_measureTabs
 
 class measureTabs(QWidget, Ui_measureTabs):
-    '''
+    """
     classdocs
-    '''
+    """
 
 
     def __init__(self, parent = None):
-        '''
+        """
         Constructor
-        '''
+        """
         super(measureTabs, self).__init__(parent)
         self.setupUi(self)
         self._measureCount = None

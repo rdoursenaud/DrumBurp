@@ -16,22 +16,22 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on Jan 30, 2011
 
 @author: Mike
-'''
+"""
 
 class ASCIISettings(object):
-    '''
+    """
     classdocs
-    '''
+    """
 
 
     def __init__(self):
-        '''
+        """
         Constructor
-        '''
+        """
         self._checkNames = []
         self._registerCheckName("metadata")
         self._registerCheckName("kitKey")

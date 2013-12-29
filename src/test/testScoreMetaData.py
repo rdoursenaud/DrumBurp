@@ -1,8 +1,8 @@
-'''
+"""
 Created on 12 Dec 2012
 
 @author: Mike Thomas
-'''
+"""
 import unittest
 from cStringIO import StringIO
 

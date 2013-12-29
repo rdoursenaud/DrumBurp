@@ -16,19 +16,19 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on 12 Mar 2011
 
 @author: Mike Thomas
 
-'''
+"""
 from QMetaDataDialog import QMetadataDialog
 from QGraphicsListData import QGraphicsListData
 
 class QMetaData(QGraphicsListData):
-    '''
+    """
     classdocs
-    '''
+    """
     _editName = "score information."
 
     def _iterData(self):

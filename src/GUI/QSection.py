@@ -16,27 +16,27 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on 26 Jan 2011
 
 @author: Mike Thomas
 
-'''
+"""
 
 from PyQt4.QtGui import QGraphicsTextItem, QTextCursor
 from PyQt4.QtCore import Qt
 from DBCommands import SetSectionTitleCommand
 
 class QSection(QGraphicsTextItem):
-    '''
+    """
     classdocs
-    '''
+    """
 
 
     def __init__(self, title, qScore = None, parent = None):
-        '''
+        """
         Constructor
-        '''
+        """
         super(QSection, self).__init__(parent = parent, scene = qScore)
         font = qScore.displayProperties.sectionFont
         if font is None:

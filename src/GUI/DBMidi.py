@@ -16,12 +16,12 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on 17 Sep 2011
 
 @author: Mike Thomas
 
-'''
+"""
 import copy
 
 HAS_MIDI = True

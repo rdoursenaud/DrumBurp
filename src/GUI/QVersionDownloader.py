@@ -16,11 +16,11 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on Mar 31, 2013
 
 @author: Mike Thomas
-'''
+"""
 
 from PyQt4.QtGui import QDialog
 from PyQt4.QtCore import QTimer

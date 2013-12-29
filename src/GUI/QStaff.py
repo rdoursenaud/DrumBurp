@@ -16,12 +16,12 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on 4 Jan 2011
 
 @author: Mike Thomas
 
-'''
+"""
 
 from PyQt4 import QtGui
 from QMeasure import QMeasure
@@ -31,15 +31,15 @@ from Data.NotePosition import NotePosition
 import itertools
 
 class QStaff(QtGui.QGraphicsItemGroup):
-    '''
+    """
     classdocs
-    '''
+    """
 
 
     def __init__(self, staff, index, scene, qScore = None):
-        '''
+        """
         Constructor
-        '''
+        """
         super(QStaff, self).__init__(scene = scene)
         self._qScore = qScore if qScore is not None else scene
         self._props = self._qScore.displayProperties

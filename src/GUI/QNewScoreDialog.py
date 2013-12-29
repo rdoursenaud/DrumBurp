@@ -16,12 +16,12 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on 9 Jan 2011
 
 @author: Mike Thomas
 
-'''
+"""
 
 from ui_newScoreDialog import Ui_newScoreDialog
 from PyQt4.QtGui import QDialog
@@ -32,14 +32,14 @@ from QComplexCountDialog import QComplexCountDialog
 from Data import DefaultKits, DrumKit, fileUtils
 
 class QNewScoreDialog(QDialog, Ui_newScoreDialog):
-    '''
+    """
     classdocs
-    '''
+    """
     def __init__(self, parent = None,
                  counter = None, registry = None):
-        '''
+        """
         Constructor
-        '''
+        """
         super(QNewScoreDialog, self).__init__(parent)
         self.setupUi(self)
         self.measureTabs.setup(counter, registry,

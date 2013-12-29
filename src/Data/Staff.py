@@ -16,25 +16,25 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on 12 Dec 2010
 
 @author: Mike Thomas
 
-'''
+"""
 from DBErrors import BadTimeError
 
 # pylint:disable-msg=R0904
 class Staff(object):
-    '''
+    """
     classdocs
-    '''
+    """
 
 
     def __init__(self):
-        '''
+        """
         Constructor
-        '''
+        """
         self._measures = []
         self._callBack = None
         self._visibleLines = {}

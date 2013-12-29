@@ -16,12 +16,12 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on 5 Jan 2011
 
 @author: Mike Thomas
 
-'''
+"""
 
 from PyQt4 import QtGui, QtCore
 
@@ -44,15 +44,15 @@ def _painter_saver(method):
     return wrapper
 
 class QMeasure(QtGui.QGraphicsItem):
-    '''
+    """
     classdocs
-    '''
+    """
 
 
     def __init__(self, index, qScore, measure, parent):
-        '''
+        """
         Constructor
-        '''
+        """
         super(QMeasure, self).__init__(parent)
         self._props = qScore.displayProperties
         self._qScore = qScore

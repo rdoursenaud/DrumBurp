@@ -16,24 +16,24 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on 9 Jan 2011
 
 @author: Mike Thomas
-'''
+"""
 from ui_insertMeasuresDialog import Ui_InsertMeasuresDialog
 from PyQt4.QtGui import QDialog
 import Data.MeasureCount
 from QComplexCountDialog import QComplexCountDialog
 
 class QInsertMeasuresDialog(QDialog, Ui_InsertMeasuresDialog):
-    '''
+    """
     classdocs
-    '''
+    """
     def __init__(self, parent, measureCount, counterRegistry):
-        '''
+        """
         Constructor
-        '''
+        """
         super(QInsertMeasuresDialog, self).__init__(parent)
         self.setupUi(self)
         self.measureTabs.setup(measureCount, counterRegistry,

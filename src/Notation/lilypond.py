@@ -16,12 +16,12 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on 4 Apr 2012
 
 @author: Mike Thomas
 
-'''
+"""
 from __future__ import print_function
 from contextlib import contextmanager
 import collections
@@ -69,25 +69,25 @@ class LilypondProblem(RuntimeError):
     pass
 
 class TripletsProblem(LilypondProblem):
-    "DrumBurp cannot yet set triplets in Lilypond"
+    """DrumBurp cannot yet set triplets in Lilypond"""
 
 class FiveSixthsProblem(LilypondProblem):
-    "DrumBurp cannot set notes of length 5/6 beat."
+    """DrumBurp cannot set notes of length 5/6 beat."""
 
 class FiveEighthsProblem(LilypondProblem):
-    "DrumBurp cannot set notes of length 5/8 beat."
+    """DrumBurp cannot set notes of length 5/8 beat."""
 
 class SevenEighthsProblem(LilypondProblem):
-    "DrumBurp cannot set notes of length 7/8 beat."
+    """DrumBurp cannot set notes of length 7/8 beat."""
 
 class FiveTwelfthsProblem(LilypondProblem):
-    "DrumBurp cannot set notes of length 5/12 beat."
+    """DrumBurp cannot set notes of length 5/12 beat."""
 
 class SevenTwelfthsProblem(LilypondProblem):
-    "DrumBurp cannot set notes of length 7/12 beat."
+    """DrumBurp cannot set notes of length 7/12 beat."""
 
 class ElevenTwelfthsProblem(LilypondProblem):
-    "DrumBurp cannot set notes of length 11/12 beat."
+    """DrumBurp cannot set notes of length 11/12 beat."""
 
 def lilyDuration(beat, ticks):
     dur = None
@@ -427,7 +427,7 @@ _PAPER_SIZES = { "A0" : "a0",
                  "Tabloid" : "tabloid" }
 
 class BadPaperSize(LilypondProblem):
-    "DrumBurp cannot create a Lilypond score on this paper size."
+    """DrumBurp cannot create a Lilypond score on this paper size."""
 class LilypondScore(object):
     def __init__(self, score):
         self.score = score

@@ -16,11 +16,11 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on 17 Apr 2011
 
 @author: Mike Thomas
-'''
+"""
 
 from ui_dbInfo import Ui_InfoDialog
 from PyQt4.QtGui import QDialog
@@ -29,9 +29,9 @@ from DBLicense import DBLicenseDialog
 
 class DBInfoDialog(QDialog, Ui_InfoDialog):
     def __init__(self, version, parent = None):
-        '''
+        """
         Constructor
-        '''
+        """
         super(DBInfoDialog, self).__init__(parent)
         self.setupUi(self)
         self.setWindowTitle("DrumBurp v%s Information" % version)

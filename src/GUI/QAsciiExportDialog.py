@@ -16,11 +16,11 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on Jan 27, 2011
 
 @author: Mike
-'''
+"""
 
 from ui_asciiDialog import Ui_asciiDialog
 from PyQt4.QtGui import QDialog, QFileDialog, QMessageBox
@@ -29,14 +29,14 @@ from Data.ASCIISettings import ASCIISettings
 import os
 
 class QAsciiExportDialog(QDialog, Ui_asciiDialog):
-    '''
+    """
     classdocs
-    '''
+    """
 
     def __init__(self, filename, parent = None, settings = None):
-        '''
+        """
         Constructor
-        '''
+        """
         super(QAsciiExportDialog, self).__init__(parent)
         self.setupUi(self)
         if settings is None:

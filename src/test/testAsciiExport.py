@@ -1,8 +1,8 @@
-'''
+"""
 Created on Dec 15, 2012
 
 @author: Mike
-'''
+"""
 import unittest
 from cStringIO import StringIO
 from Data.ASCIISettings import ASCIISettings

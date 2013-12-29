@@ -16,11 +16,11 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on 5 Dec 2010
 
 @author: Mike Thomas
-'''
+"""
 from PyQt4.QtDesigner import QPyDesignerCustomWidgetPlugin
 from ScoreView import ScoreView
 

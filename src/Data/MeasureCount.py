@@ -16,12 +16,12 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on 18 Jan 2011
 
 @author: Mike Thomas
 
-'''
+"""
 
 from Beat import Beat
 from Counter import CounterRegistry

@@ -16,19 +16,19 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on 17 Apr 2011
 
 @author: Mike Thomas
-'''
+"""
 from ui_dbStartup import Ui_dbStartup
 from PyQt4.QtGui import QDialog
 
 class DBStartupDialog(QDialog, Ui_dbStartup):
     def __init__(self, version, parent = None):
-        '''
+        """
         Constructor
-        '''
+        """
         super(DBStartupDialog, self).__init__(parent)
         self.setupUi(self)
         self.setWindowTitle("Welcome to DrumBurp v" + version)

@@ -16,28 +16,28 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on 13 Mar 2011
 
 @author: Mike Thomas
 
-'''
+"""
 
 
 from PyQt4.QtGui import QGraphicsItem, QFontMetrics
 from PyQt4.QtCore import QPoint, QRectF, QPointF, Qt
 
 class QGraphicsListData(QGraphicsItem):
-    '''
+    """
     classdocs
-    '''
+    """
 
     _editName = ""
 
     def __init__(self, qScore, parent = None):
-        '''
+        """
         Constructor
-        '''
+        """
         super(QGraphicsListData, self).__init__(parent = parent, scene = qScore)
         self._qScore = qScore
         self._props = qScore.displayProperties

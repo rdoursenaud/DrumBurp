@@ -16,20 +16,20 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on 17 Apr 2011
 
 @author: Mike Thomas
 
-'''
+"""
 
 from PyQt4.QtDesigner import QPyDesignerCustomWidgetPlugin
 from measureTabs import measureTabs
 
 class measureTabs_plugin(QPyDesignerCustomWidgetPlugin):
-    '''
+    """
     classdocs
-    '''
+    """
     def __init__(self, parent = None):
         super(measureTabs_plugin, self).__init__(parent)
         self.initialized = False

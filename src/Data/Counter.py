@@ -16,37 +16,37 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
-'''
+"""
 Created on 16 Apr 2011
 
 @author: Mike Thomas
 
-'''
+"""
 
 
 from DBConstants import BEAT_COUNT
 class Counter(object):
-    '''A Counter represents a way of subdividing a single beat.
-    
+    """A Counter represents a way of subdividing a single beat.
+
     A single beat can be counted in many different ways, e.g. as a single
     quarter note, as two 8th notes, as 4 16ths, etc. Counter objects represent
     these different ways to subdivide a beat.
-    
+
     A Counter has a count string associated with it. This should begin with
     the DBComstants.BEAT_COUNT character. This character represents the count
     at the start of the beat. The following characters represent the count
     for the subdivisions of the beat.
-    
-    The alternatives list for a Counter is a list of alternative count strings 
+
+    The alternatives list for a Counter is a list of alternative count strings
     that will also be recognised as matching this Counter. This is to facilitate
     backwards compatibility when the default count string for a Counter changes.
-    '''
+    """
 
 
     def __init__(self, counts, *alternatives):
-        '''
+        """
         Constructor
-        '''
+        """
         if not counts.startswith(BEAT_COUNT):
             raise ValueError("A Counter must begin with a BEAT_COUNT.")
         for count in alternatives:

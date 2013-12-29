@@ -39,8 +39,7 @@ class Exporter(object):
 
     def _exportScoreData(self):
         scoreData = self.score.scoreData
-        metadataString = []
-        metadataString.append("Title     : " + scoreData.title)
+        metadataString = ["Title     : " + scoreData.title]
         if scoreData.artistVisible:
             metadataString.append("Artist    : " + scoreData.artist)
         if scoreData.bpmVisible:

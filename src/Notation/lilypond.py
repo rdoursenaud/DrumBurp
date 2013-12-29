@@ -323,7 +323,7 @@ class LilyKit(object):
         self._lilyNames = []
         allLilyHeads = set()
         allLilyNames = set()
-        reservedNames = set(["s", "r"])
+        reservedNames = {"s", "r"}
         headCount = 0
         for drum in kit:
             sanitized = "".join(ch.lower() for ch in drum.name if ch.isalpha())

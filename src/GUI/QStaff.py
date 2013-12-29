@@ -191,13 +191,13 @@ class QStaff(QtGui.QGraphicsItemGroup):
                            itertools.chain(self._measures, self._measureLines))
 
     def clearHighlight(self):
-        if self._highlightedLine != None:
+        if self._highlightedLine is not None:
             self._lineLabels[self._highlightedLine].setHighlight(False)
         self._highlightedLine = None
 
     def setLineHighlight(self, lineIndex):
         if lineIndex != self._highlightedLine:
-            if self._highlightedLine != None:
+            if self._highlightedLine is not None:
                 self._lineLabels[self._highlightedLine].setHighlight(False)
             self._highlightedLine = lineIndex
             self._lineLabels[self._highlightedLine].setHighlight(True)

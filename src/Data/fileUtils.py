@@ -42,7 +42,7 @@ class dbFileIterator(object):
         def _process(self):
             linesRead = 0
             for lineType, lineData in self._iterator:
-                if lineData == None:
+                if lineData is None:
                     lineData = self._convertNone
                 if lineType == self._startLine:
                     pass

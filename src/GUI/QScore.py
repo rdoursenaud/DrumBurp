@@ -525,7 +525,7 @@ class QScore(QtGui.QGraphicsScene):
             if event.key() == QtCore.Qt.Key_Escape:
                 self.sendFsmEvent(Escape())
             else:
-                if self._currentKey == None and event.text():
+                if self._currentKey is None and event.text():
                     self._currentKey = unicode(event.text())
                     self._highlightCurrentKeyHead()
         return super(QScore, self).keyPressEvent(event)
@@ -797,11 +797,11 @@ class QScore(QtGui.QGraphicsScene):
     def highlightPlayingMeasure(self, position):
         if position == self._playingMeasure:
             return
-        if self._playingMeasure != None:
+        if self._playingMeasure is not None:
             qMeasure = self.getQMeasure(self._playingMeasure)
             qMeasure.setPlaying(False)
         self._playingMeasure = position
-        if self._playingMeasure == None:
+        if self._playingMeasure is None:
             return
         qMeasure = self.getQMeasure(self._playingMeasure)
         qMeasure.setPlaying(True)

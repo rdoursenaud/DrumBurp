@@ -41,7 +41,7 @@ class QMenuIgnoreCancelClick(QMenu):
         self.aboutToHide.connect(self._checkGoodSelection)
 
     def _checkGoodSelection(self):
-        if self.activeAction() == None:
+        if self.activeAction() is None:
             self._qScore.ignoreNextClick()
             self._qScore.sendFsmEvent(MenuCancel())
 

@@ -311,7 +311,7 @@ class QMeasure(QtGui.QGraphicsItem):
                 self.parentItem().setLineHighlight(lineIndex)
                 realIndex = self.parentItem().lineIndex(lineIndex)
                 self._qScore.setCurrentHeads(realIndex)
-        elif self._highlight != None:
+        elif self._highlight is not None:
             self._highlight = None
             self.parentItem().clearHighlight()
             self.update()

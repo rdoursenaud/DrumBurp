@@ -23,6 +23,12 @@ Created on 12 Dec 2010
 
 """
 
+import bisect
+import hashlib
+import gzip
+import itertools
+from StringIO import StringIO
+
 import DrumKit
 from Staff import Staff
 from Measure import Measure
@@ -33,16 +39,13 @@ from NotePosition import NotePosition
 from ScoreMetaData import ScoreMetaData
 from FontOptions import FontOptions
 import fileUtils
-import bisect
-import hashlib
-import gzip
-import itertools
-from StringIO import StringIO
 
 CURRENT_FILE_FORMAT = 0
 
+
 class InconsistentRepeats(StandardError):
     """Bad repeat data"""
+
 
 class Score(object):
     """
@@ -93,6 +96,7 @@ class Score(object):
         def wrappedCallBack(position):
             position.staffIndex = staffIndex
             self._runCallBack(position)
+
         staff.setCallBack(wrappedCallBack)
 
     def _checkStaffIndex(self, index):
@@ -100,11 +104,11 @@ class Score(object):
             raise BadTimeError()
 
     def _checkDrumIndex(self, index):
-        if not(0 <= index < len(self.drumKit)):
+        if not (0 <= index < len(self.drumKit)):
             raise BadTimeError()
 
-    def _checkMeasureIndex(self, index, endOk = False):
-        if not(0 <= index < self.numMeasures()):
+    def _checkMeasureIndex(self, index, endOk=False):
+        if not (0 <= index < self.numMeasures()):
             if not (endOk and index == self.numMeasures()):
                 raise BadTimeError()
 
@@ -166,7 +170,7 @@ class Score(object):
             if (measure.isRepeatEnd() or measure.isSectionEnd()):
                 if alternates:
                     if (index + 1 == numMeasures or
-                        not measures[index + 1].alternateText
+                            not measures[index + 1].alternateText
                         or measures[index + 1].isRepeatStart()
                         or measure.isSectionEnd()):
                         if alternates != set(xrange(1, numRepeats + 1)):
@@ -268,13 +272,13 @@ class Score(object):
         staff.clearCallBack()
         if staff.isSectionEnd():
             if index == 0 or self.getStaff(index - 1).isSectionEnd():
-                position = NotePosition(staffIndex = index)
+                position = NotePosition(staffIndex=index)
                 sectionIndex = self.getSectionIndex(position)
                 self._deleteSectionTitle(sectionIndex)
             else:
                 prevStaff = self.getStaff(index - 1)
-                position = NotePosition(staffIndex = index - 1,
-                                        measureIndex =
+                position = NotePosition(staffIndex=index - 1,
+                                        measureIndex=
                                         prevStaff.numMeasures() - 1)
                 prevStaff.setSectionEnd(position, True)
         self._staffs.pop(index)
@@ -311,11 +315,11 @@ class Score(object):
             staff = self.getStaff(staffIndex)
         if staffIndex == self.numStaffs():
             raise BadTimeError(index)
-        return NotePosition(staffIndex = staffIndex,
-                            measureIndex = index)
+        return NotePosition(staffIndex=staffIndex,
+                            measureIndex=index)
 
 
-    def insertMeasureByIndex(self, width, index = None, counter = None):
+    def insertMeasureByIndex(self, width, index=None, counter=None):
         if index is None:
             index = self.numMeasures()
         if self.numStaffs() == 0:
@@ -328,11 +332,11 @@ class Score(object):
             staff, index = self._staffContainingMeasure(index)
         newMeasure = Measure(width)
         newMeasure.counter = counter
-        staff.insertMeasure(NotePosition(measureIndex = index),
+        staff.insertMeasure(NotePosition(measureIndex=index),
                             newMeasure)
         return newMeasure
 
-    def insertMeasureByPosition(self, width, position = None, counter = None):
+    def insertMeasureByPosition(self, width, position=None, counter=None):
         if position is None:
             if self.numStaffs() == 0:
                 self._addStaff()
@@ -375,7 +379,7 @@ class Score(object):
 
     def trailingEmptyMeasures(self):
         emptyMeasures = []
-        np = NotePosition(staffIndex = self.numStaffs() - 1)
+        np = NotePosition(staffIndex=self.numStaffs() - 1)
         staff = self.getItemAtPosition(np)
         np.measureIndex = staff.numMeasures() - 1
         measure = self.getItemAtPosition(np)
@@ -395,12 +399,12 @@ class Score(object):
         staff = self.getStaff(position.staffIndex)
         return staff.copyMeasure(position)
 
-    def pasteMeasure(self, position, notes, copyMeasureDecorations = False):
+    def pasteMeasure(self, position, notes, copyMeasureDecorations=False):
         self._checkStaffIndex(position.staffIndex)
         staff = self.getStaff(position.staffIndex)
         return staff.pasteMeasure(position, notes, copyMeasureDecorations)
 
-    def pasteMeasureByIndex(self, index, notes, copyMeasureDecorations = False):
+    def pasteMeasureByIndex(self, index, notes, copyMeasureDecorations=False):
         position = self.getMeasurePosition(index)
         self.pasteMeasure(position, notes, copyMeasureDecorations)
 
@@ -410,10 +414,10 @@ class Score(object):
     def getSectionIndex(self, position):
         ends = []
         for staffIndex, staff in enumerate(self.iterStaffs()):
-            assert(staff.isConsistent())
+            assert (staff.isConsistent())
             if staff.isSectionEnd():
                 ends.append(staffIndex)
-        assert(len(ends) == self.numSections())
+        assert (len(ends) == self.numSections())
         return bisect.bisect_left(ends, position.staffIndex)
 
     def getSectionTitle(self, index):
@@ -428,7 +432,7 @@ class Score(object):
     def getSectionStartStaffIndex(self, position):
         startIndex = position.staffIndex
         while (startIndex > 0 and
-               not self.getStaff(startIndex - 1).isSectionEnd()):
+                   not self.getStaff(startIndex - 1).isSectionEnd()):
             startIndex -= 1
         return startIndex
 
@@ -438,7 +442,7 @@ class Score(object):
             return
         startIndex = position.staffIndex
         while (startIndex > 0 and
-               not self.getStaff(startIndex - 1).isSectionEnd()):
+                   not self.getStaff(startIndex - 1).isSectionEnd()):
             startIndex -= 1
         while not self.getStaff(startIndex).isSectionEnd():
             self._deleteStaffByIndex(startIndex)
@@ -459,7 +463,7 @@ class Score(object):
         staff.setSectionEnd(position, onOff)
 
     def iterMeasuresInSection(self, sectionIndex):
-        if not(0 <= sectionIndex < self.numSections()):
+        if not (0 <= sectionIndex < self.numSections()):
             raise BadTimeError()
         thisSection = 0
         inSection = (thisSection == sectionIndex)
@@ -506,7 +510,7 @@ class Score(object):
         finally:
             self.turnOnCallBacks()
 
-    def addNote(self, position, head = None):
+    def addNote(self, position, head=None):
         self._checkStaffIndex(position.staffIndex)
         self._checkDrumIndex(position.drumIndex)
         if head is None:
@@ -518,7 +522,7 @@ class Score(object):
         self._checkDrumIndex(position.drumIndex)
         self.getStaff(position.staffIndex).deleteNote(position)
 
-    def toggleNote(self, position, head = None):
+    def toggleNote(self, position, head=None):
         self._checkStaffIndex(position.staffIndex)
         self._checkDrumIndex(position.drumIndex)
         if head is None:
@@ -577,7 +581,7 @@ class Score(object):
     def saveFormatState(self):
         self._formatState = self._getFormatState()
 
-    def formatScore(self, width = None, ignoreErrors = True):
+    def formatScore(self, width=None, ignoreErrors=True):
         if width is None:
             width = self.scoreData.width
         measures = list(self.iterMeasures())
@@ -603,7 +607,7 @@ class Score(object):
                     staff = self.getStaff(staffIndex)
                     staff.addMeasure(measure)
             if (measure.isLineEnd() and
-                measureIndex != len(measures) - 1):
+                        measureIndex != len(measures) - 1):
                 staffIndex += 1
                 if staffIndex == self.numStaffs():
                     self._addStaff()
@@ -654,7 +658,7 @@ class Score(object):
         if count == 0:
             yield self.drumKit[0]
 
-    def iterVisibleLines(self, staffIndex, forceIgnoreEmpty = False):
+    def iterVisibleLines(self, staffIndex, forceIgnoreEmpty=False):
         if self.scoreData.emptyLinesVisible and not forceIgnoreEmpty:
             return iter(self.drumKit)
         else:
@@ -696,10 +700,12 @@ class Score(object):
             raise DBVersionError(scoreIterator)
         # Read from the input file
         self.lilyFill = False
+
         def _readMeasure(lineData):
             measureWidth = int(lineData)
             measure = self.insertMeasureByIndex(measureWidth)
             measure.read(scoreIterator)
+
         with scoreIterator.section(None, None) as section:
             section.readSubsection("SCORE_METADATA", self.scoreData.load)
             section.readCallback("START_BAR", _readMeasure)
@@ -723,7 +729,7 @@ class Score(object):
         # Format the score appropriately
         self.formatScore(self.scoreData.width)
         # Make sure we've got the right number of section titles
-        assert(all(staff.isConsistent() for staff in self.iterStaffs()))
+        assert (all(staff.isConsistent() for staff in self.iterStaffs()))
         numSections = len([staff for staff in self.iterStaffs()
                            if staff.isSectionEnd()])
         if numSections > self.numSections():
@@ -738,11 +744,12 @@ class Score(object):
         scoreString = scoreString.getvalue()
         return hashlib.md5(scoreString).digest()  # pylint:disable-msg=E1121
 
+
 class ScoreFactory(object):
-    def __call__(self, filename = None,
-                 numMeasures = 32,
-                 counter = None,
-                 kit = None):
+    def __call__(self, filename=None,
+                 numMeasures=32,
+                 counter=None,
+                 kit=None):
         if filename is not None:
             score = self.loadScore(filename)
         else:
@@ -761,7 +768,7 @@ class ScoreFactory(object):
             counter = counter[0][1]
             counter = makeSimpleCount(counter, 4)
         for dummy in range(0, numMeasures):
-            score.insertMeasureByIndex(len(counter), counter = counter)
+            score.insertMeasureByIndex(len(counter), counter=counter)
         score.scoreData.makeEmpty()
         return score
 

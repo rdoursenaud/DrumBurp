@@ -10,6 +10,7 @@ from cStringIO import StringIO
 
 from Data import ScoreMetaData, fileUtils, DBErrors
 
+
 class Test(unittest.TestCase):
     def testWrite(self):
         meta = ScoreMetaData.ScoreMetaData()
@@ -169,6 +170,7 @@ class Test(unittest.TestCase):
         iterator = fileUtils.dbFileIterator(handle)
         meta = ScoreMetaData.ScoreMetaData()
         self.assertRaises(DBErrors.InvalidPositiveInteger, meta.load, iterator)
+
 
 if __name__ == "__main__":
     unittest.main()

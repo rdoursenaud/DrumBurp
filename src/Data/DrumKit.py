@@ -27,6 +27,7 @@ from Drum import Drum, HeadData
 from DefaultKits import STEM_DOWN, STEM_UP, NAMED_DEFAULTS
 from DBErrors import DuplicateDrumError, NoSuchDrumError
 
+
 class DrumKit(object):
     """
     classdocs
@@ -52,9 +53,9 @@ class DrumKit(object):
             raise DuplicateDrumError(drum.name, drum.abbr)
         self._drums.append(drum)
 
-    def deleteDrum(self, name = None, index = None):
-        assert(not(index is None and name is None))
-        assert(not(index is not None and name is not None))
+    def deleteDrum(self, name=None, index=None):
+        assert (not (index is None and name is None))
+        assert (not (index is not None and name is not None))
         if name is not None:
             index = [i for i, dr in enumerate(self._drums)
                      if dr.name == name]
@@ -80,6 +81,7 @@ class DrumKit(object):
     def read(self, scoreIterator):
         class DrumTracker(object):
             lastDrum = None
+
             @classmethod
             def addDrum(cls, lineData):
                 fields = lineData.split(",")
@@ -90,9 +92,11 @@ class DrumKit(object):
                 drum = Drum(*fields)
                 self.addDrum(drum)
                 cls.lastDrum = drum
+
             @classmethod
             def readHeadData(cls, headData):
                 cls.lastDrum.readHeadData(headData)
+
         tracker = DrumTracker
         with scoreIterator.section("KIT_START", "KIT_END") as section:
             section.readCallback("DRUM", tracker.addDrum)
@@ -105,14 +109,15 @@ class DrumKit(object):
     def getDefaultHead(self, index):
         return self[index].head
 
-def _loadDefaultKit(kit, kitInfo = None):
+
+def _loadDefaultKit(kit, kitInfo=None):
     for (drumData, midiNote, notationHead,
          notationLine, stemDirection) in kitInfo["drums"]:
         drum = Drum(*drumData)
-        headData = HeadData(midiNote = midiNote,
-                            notationHead = notationHead,
-                            notationLine = notationLine,
-                            stemDirection = stemDirection)
+        headData = HeadData(midiNote=midiNote,
+                            notationHead=notationHead,
+                            notationLine=notationLine,
+                            stemDirection=stemDirection)
         drum.addNoteHead(drum.head, headData)
         for (extraHead,
              newMidi,
@@ -126,16 +131,17 @@ def _loadDefaultKit(kit, kitInfo = None):
             if newMidiVolume is None:
                 newMidiVolume = headData.midiVolume
             newData = HeadData(newMidi, newMidiVolume, newEffect,
-                               notationLine = notationLine,
-                               notationHead = newNotationHead,
-                               notationEffect = newNotationEffect,
-                               stemDirection = stemDirection,
-                               shortcut = shortcut)
+                               notationLine=notationLine,
+                               notationHead=newNotationHead,
+                               notationEffect=newNotationEffect,
+                               stemDirection=stemDirection,
+                               shortcut=shortcut)
             drum.addNoteHead(extraHead, newData)
         drum.checkShortcuts()
         kit.addDrum(drum)
 
-def getNamedDefaultKit(defaultName = None):
+
+def getNamedDefaultKit(defaultName=None):
     if defaultName is None:
         defaultName = "Default"
     kitInfo = NAMED_DEFAULTS[defaultName]

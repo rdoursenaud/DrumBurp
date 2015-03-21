@@ -4,8 +4,10 @@ Created on Feb 25, 2012
 @author: Mike
 """
 
-from ui_alternateRepeatWidget import Ui_AlternateWidget
 from PyQt4.QtGui import QWidget
+
+from ui_alternateRepeatWidget import Ui_AlternateWidget
+
 
 class QAlternateWidget(QWidget, Ui_AlternateWidget):
     """
@@ -13,7 +15,7 @@ class QAlternateWidget(QWidget, Ui_AlternateWidget):
     """
 
 
-    def __init__(self, startVal, endVal, isRange, parent = None):
+    def __init__(self, startVal, endVal, isRange, parent=None):
         super(QAlternateWidget, self).__init__(parent)
         self.setupUi(self)
         self.startBox.setValue(startVal)

@@ -14,6 +14,7 @@ try:
 except AttributeError:
     _fromUtf8 = lambda s: s
 
+
 class Ui_complexCountDialog(object):
     def setupUi(self, complexCountDialog):
         complexCountDialog.setObjectName(_fromUtf8("complexCountDialog"))
@@ -67,7 +68,8 @@ class Ui_complexCountDialog(object):
         self.verticalLayout_2.addWidget(self.groupBox)
         self.buttonBox = QtGui.QDialogButtonBox(complexCountDialog)
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok|QtGui.QDialogButtonBox.Reset)
+        self.buttonBox.setStandardButtons(
+            QtGui.QDialogButtonBox.Cancel | QtGui.QDialogButtonBox.Ok | QtGui.QDialogButtonBox.Reset)
         self.buttonBox.setObjectName(_fromUtf8("buttonBox"))
         self.verticalLayout_2.addWidget(self.buttonBox)
 
@@ -77,18 +79,40 @@ class Ui_complexCountDialog(object):
         QtCore.QMetaObject.connectSlotsByName(complexCountDialog)
 
     def retranslateUi(self, complexCountDialog):
-        complexCountDialog.setWindowTitle(QtGui.QApplication.translate("complexCountDialog", "Edit Complex Measure Count", None, QtGui.QApplication.UnicodeUTF8))
-        self.beatList.setToolTip(QtGui.QApplication.translate("complexCountDialog", "List of beats in the measure count", None, QtGui.QApplication.UnicodeUTF8))
-        self.addButton.setToolTip(QtGui.QApplication.translate("complexCountDialog", "Add a new beat at the end of this count", None, QtGui.QApplication.UnicodeUTF8))
-        self.addButton.setText(QtGui.QApplication.translate("complexCountDialog", "Add Beat", None, QtGui.QApplication.UnicodeUTF8))
-        self.deleteButton.setToolTip(QtGui.QApplication.translate("complexCountDialog", "Delete the currently selected count", None, QtGui.QApplication.UnicodeUTF8))
-        self.deleteButton.setText(QtGui.QApplication.translate("complexCountDialog", "Delete Beat", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_2.setText(QtGui.QApplication.translate("complexCountDialog", "Count", None, QtGui.QApplication.UnicodeUTF8))
-        self.countBox.setToolTip(QtGui.QApplication.translate("complexCountDialog", "Count to use for the current beat", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_3.setText(QtGui.QApplication.translate("complexCountDialog", "Ticks", None, QtGui.QApplication.UnicodeUTF8))
-        self.numTicksSpinBox.setToolTip(QtGui.QApplication.translate("complexCountDialog", "How many ticks of the count should the current beat use?", None, QtGui.QApplication.UnicodeUTF8))
-        self.groupBox.setToolTip(QtGui.QApplication.translate("complexCountDialog", "Preview of the measure count according to the current settings", None, QtGui.QApplication.UnicodeUTF8))
-        self.groupBox.setTitle(QtGui.QApplication.translate("complexCountDialog", "Preview", None, QtGui.QApplication.UnicodeUTF8))
-        self.previewText.setText(QtGui.QApplication.translate("complexCountDialog", "TextLabel", None, QtGui.QApplication.UnicodeUTF8))
-        self.buttonBox.setToolTip(QtGui.QApplication.translate("complexCountDialog", "Reset the count to the original settings", None, QtGui.QApplication.UnicodeUTF8))
+        complexCountDialog.setWindowTitle(
+            QtGui.QApplication.translate("complexCountDialog", "Edit Complex Measure Count", None,
+                                         QtGui.QApplication.UnicodeUTF8))
+        self.beatList.setToolTip(
+            QtGui.QApplication.translate("complexCountDialog", "List of beats in the measure count", None,
+                                         QtGui.QApplication.UnicodeUTF8))
+        self.addButton.setToolTip(
+            QtGui.QApplication.translate("complexCountDialog", "Add a new beat at the end of this count", None,
+                                         QtGui.QApplication.UnicodeUTF8))
+        self.addButton.setText(
+            QtGui.QApplication.translate("complexCountDialog", "Add Beat", None, QtGui.QApplication.UnicodeUTF8))
+        self.deleteButton.setToolTip(
+            QtGui.QApplication.translate("complexCountDialog", "Delete the currently selected count", None,
+                                         QtGui.QApplication.UnicodeUTF8))
+        self.deleteButton.setText(
+            QtGui.QApplication.translate("complexCountDialog", "Delete Beat", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_2.setText(
+            QtGui.QApplication.translate("complexCountDialog", "Count", None, QtGui.QApplication.UnicodeUTF8))
+        self.countBox.setToolTip(
+            QtGui.QApplication.translate("complexCountDialog", "Count to use for the current beat", None,
+                                         QtGui.QApplication.UnicodeUTF8))
+        self.label_3.setText(
+            QtGui.QApplication.translate("complexCountDialog", "Ticks", None, QtGui.QApplication.UnicodeUTF8))
+        self.numTicksSpinBox.setToolTip(QtGui.QApplication.translate("complexCountDialog",
+                                                                     "How many ticks of the count should the current beat use?",
+                                                                     None, QtGui.QApplication.UnicodeUTF8))
+        self.groupBox.setToolTip(QtGui.QApplication.translate("complexCountDialog",
+                                                              "Preview of the measure count according to the current settings",
+                                                              None, QtGui.QApplication.UnicodeUTF8))
+        self.groupBox.setTitle(
+            QtGui.QApplication.translate("complexCountDialog", "Preview", None, QtGui.QApplication.UnicodeUTF8))
+        self.previewText.setText(
+            QtGui.QApplication.translate("complexCountDialog", "TextLabel", None, QtGui.QApplication.UnicodeUTF8))
+        self.buttonBox.setToolTip(
+            QtGui.QApplication.translate("complexCountDialog", "Reset the count to the original settings", None,
+                                         QtGui.QApplication.UnicodeUTF8))
 

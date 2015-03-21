@@ -21,11 +21,13 @@ Created on 17 Apr 2011
 
 @author: Mike Thomas
 """
-from ui_dbStartup import Ui_dbStartup
 from PyQt4.QtGui import QDialog
 
+from ui_dbStartup import Ui_dbStartup
+
+
 class DBStartupDialog(QDialog, Ui_dbStartup):
-    def __init__(self, version, parent = None):
+    def __init__(self, version, parent=None):
         """
         Constructor
         """

@@ -14,25 +14,31 @@ try:
 except AttributeError:
     _fromUtf8 = lambda s: s
 
+
 class Ui_VersionDownloader(object):
     def setupUi(self, VersionDownloader):
         VersionDownloader.setObjectName(_fromUtf8("VersionDownloader"))
         VersionDownloader.setWindowModality(QtCore.Qt.ApplicationModal)
         VersionDownloader.resize(404, 151)
-        VersionDownloader.setWindowTitle(QtGui.QApplication.translate("VersionDownloader", "Finding new version information", None, QtGui.QApplication.UnicodeUTF8))
+        VersionDownloader.setWindowTitle(
+            QtGui.QApplication.translate("VersionDownloader", "Finding new version information", None,
+                                         QtGui.QApplication.UnicodeUTF8))
         self.verticalLayout = QtGui.QVBoxLayout(VersionDownloader)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         self.message = QtGui.QLabel(VersionDownloader)
-        self.message.setText(QtGui.QApplication.translate("VersionDownloader", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">Contacting </span><a href=\"htttp://www.whatang.org\"><span style=\" text-decoration: underline; color:#0000ff;\">www.whatang.org</span></a><span style=\" font-size:8pt;\"> to detect latest version. Please wait...</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.message.setText(QtGui.QApplication.translate("VersionDownloader",
+                                                          "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                                                          "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+                                                          "p, li { white-space: pre-wrap; }\n"
+                                                          "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+                                                          "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">Contacting </span><a href=\"htttp://www.whatang.org\"><span style=\" text-decoration: underline; color:#0000ff;\">www.whatang.org</span></a><span style=\" font-size:8pt;\"> to detect latest version. Please wait...</span></p></body></html>",
+                                                          None, QtGui.QApplication.UnicodeUTF8))
         self.message.setObjectName(_fromUtf8("message"))
         self.verticalLayout.addWidget(self.message)
         self.resultBox = QtGui.QGroupBox(VersionDownloader)
         self.resultBox.setEnabled(False)
-        self.resultBox.setTitle(QtGui.QApplication.translate("VersionDownloader", "Result", None, QtGui.QApplication.UnicodeUTF8))
+        self.resultBox.setTitle(
+            QtGui.QApplication.translate("VersionDownloader", "Result", None, QtGui.QApplication.UnicodeUTF8))
         self.resultBox.setObjectName(_fromUtf8("resultBox"))
         self.verticalLayout_2 = QtGui.QVBoxLayout(self.resultBox)
         self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))

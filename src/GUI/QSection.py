@@ -25,7 +25,9 @@ Created on 26 Jan 2011
 
 from PyQt4.QtGui import QGraphicsTextItem, QTextCursor
 from PyQt4.QtCore import Qt
+
 from DBCommands import SetSectionTitleCommand
+
 
 class QSection(QGraphicsTextItem):
     """
@@ -33,11 +35,11 @@ class QSection(QGraphicsTextItem):
     """
 
 
-    def __init__(self, title, qScore = None, parent = None):
+    def __init__(self, title, qScore=None, parent=None):
         """
         Constructor
         """
-        super(QSection, self).__init__(parent = parent, scene = qScore)
+        super(QSection, self).__init__(parent=parent, scene=qScore)
         font = qScore.displayProperties.sectionFont
         if font is None:
             font = self.font()
@@ -54,12 +56,13 @@ class QSection(QGraphicsTextItem):
     def setIndex(self, index):
         self._index = index
 
-    _keyMoves = {Qt.Key_Left:QTextCursor.Left,
-                 Qt.Key_Right:QTextCursor.Right,
-                 Qt.Key_Home:QTextCursor.Start,
-                 Qt.Key_End:QTextCursor.End,
-                 Qt.Key_Up:QTextCursor.NoMove,
-                 Qt.Key_Down:QTextCursor.NoMove}
+    _keyMoves = {Qt.Key_Left: QTextCursor.Left,
+                 Qt.Key_Right: QTextCursor.Right,
+                 Qt.Key_Home: QTextCursor.Start,
+                 Qt.Key_End: QTextCursor.End,
+                 Qt.Key_Up: QTextCursor.NoMove,
+                 Qt.Key_Down: QTextCursor.NoMove}
+
     def keyPressEvent(self, event):
         if event.key() in (Qt.Key_Return, Qt.Key_Enter):
             event.ignore()

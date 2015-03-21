@@ -49,6 +49,7 @@ DRAG_TIME_CONSTANT = 96
 try:
     import pygame
     import pygame.midi
+
     pygame.init()
     pygame.midi.init()
     pygame.mixer.init(_FREQ, _BITSIZE, _CHANNELS, _NUMSAMPLES)
@@ -65,6 +66,7 @@ try:
 
 except ImportError:
     HAS_MIDI = False
+
     def get_default_id():
         return -1
 
@@ -72,12 +74,14 @@ except ImportError:
         _PLAYER.cleanup()
 
 import atexit
+
 atexit.register(cleanup)
 import time
 import StringIO
 
 from PyQt4.QtCore import QTimer, pyqtSignal, QObject
 from Data.MeasureCount import MIDITICKSPERBEAT
+
 
 class _midi(QObject):
     def __init__(self):
@@ -182,7 +186,7 @@ class _midi(QObject):
         self.timer.start(baseTime + 500)
         self._measureTimer.start(0)
 
-    def loopBars(self, measureIterator, score, loopCount = 100):
+    def loopBars(self, measureIterator, score, loopCount=100):
         measureList = [(measure, measureIndex) for
                        (measure, measureIndex, unused)
                        in measureIterator] * loopCount
@@ -226,29 +230,38 @@ HAS_MIDI = HAS_MIDI and _PLAYER.isGood()
 SONGEND_SIGNAL = _PLAYER.timer.timeout
 HIGHLIGHT_SIGNAL = _PLAYER.highlightMeasure
 
+
 def setKit(drumKit):
     _PLAYER.kit = drumKit
+
 
 def playNote(drumIndex, head):
     _PLAYER.playNote(drumIndex, head)
 
+
 def playHeadData(headData):
     _PLAYER.playHeadData(headData)
+
 
 def playScore(score):
     _PLAYER.playScore(score)
 
-def loopBars(measureIterator, score, loopCount = 100):
+
+def loopBars(measureIterator, score, loopCount=100):
     _PLAYER.loopBars(measureIterator, score, loopCount)
+
 
 def shutUp():
     _PLAYER.shutUp()
 
+
 def setMute(onOff):
     _PLAYER.setMute(onOff)
 
+
 def isMuted():
     return _PLAYER.isMuted()
+
 
 def encodeSevenBitDelta(delta, midiData):
     values = []
@@ -266,6 +279,7 @@ def encodeSevenBitDelta(delta, midiData):
         values.append(thisValue)
     values.reverse()
     midiData.extend(values)
+
 
 def exportMidi(measureIterator, score, handle):
     handle.write("MThd\x00\x00\x00\x06\x00\x00\x00\x01")

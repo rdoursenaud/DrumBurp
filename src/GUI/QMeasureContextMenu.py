@@ -33,6 +33,7 @@ from DBCommands import (InsertMeasuresCommand,
 from QInsertMeasuresDialog import QInsertMeasuresDialog
 from DBFSMEvents import MenuSelect, RepeatNotes, EditMeasureProperties
 
+
 class QMeasureContextMenu(QMenuIgnoreCancelClick):
     def __init__(self, qScore, qmeasure, firstNote, alternateText):
         """
@@ -60,7 +61,7 @@ class QMeasureContextMenu(QMenuIgnoreCancelClick):
 
     def _setupEditSection(self):
         if (self._noteText !=
-            DBConstants.EMPTY_NOTE):
+                DBConstants.EMPTY_NOTE):
             actionText = "Repeat note"
             self.addAction(DBIcons.getIcon("repeat"),
                            actionText, self._repeatNote)
@@ -72,8 +73,8 @@ class QMeasureContextMenu(QMenuIgnoreCancelClick):
                                          "Paste Over Selected Measures",
                                          self._pasteMeasuresOver)
             fillAction = self.addAction(DBIcons.getIcon("paste"),
-                                         "Fill Paste Selected Measures",
-                                         self._fillPaste)
+                                        "Fill Paste Selected Measures",
+                                        self._fillPaste)
             fillAction.setEnabled(len(self._qScore.measureClipboard) > 0)
         else:
             self.addAction(DBIcons.getIcon("copy"), "Copy Measure",
@@ -94,7 +95,7 @@ class QMeasureContextMenu(QMenuIgnoreCancelClick):
         sectionCopyMenu = insertMenu.addMenu("Section Copy")
         sectionCopyMenu.setEnabled(score.numSections() > 0)
         for si, sectionTitle in enumerate(score.iterSections()):
-            copyIt = lambda i = si:self._copySection(i)
+            copyIt = lambda i=si: self._copySection(i)
             sectionCopyMenu.addAction(sectionTitle, copyIt)
         self.addSeparator()
 
@@ -124,7 +125,7 @@ class QMeasureContextMenu(QMenuIgnoreCancelClick):
                                                  self._deleteEmptyMeasures)
         emptyPositions = score.trailingEmptyMeasures()
         deleteEmptyAction.setEnabled(score.numMeasures() > 1
-                                     and len(emptyPositions) > 0)
+        and len(emptyPositions) > 0)
         self.addSeparator()
 
     def _repeatNote(self):
@@ -139,7 +140,7 @@ class QMeasureContextMenu(QMenuIgnoreCancelClick):
                                          measurePosition)
         self._qScore.sendFsmEvent(fsmEvent)
 
-    def _insertDefaultMeasure(self, np, preserveSectionEnd = False):
+    def _insertDefaultMeasure(self, np, preserveSectionEnd=False):
         mc = self._qScore.defaultCount
         command = InsertMeasuresCommand(self._qScore, np, 1,
                                         mc, preserveSectionEnd)

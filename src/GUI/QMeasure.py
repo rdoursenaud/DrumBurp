@@ -27,12 +27,12 @@ from PyQt4 import QtGui, QtCore
 
 from Data.NotePosition import NotePosition
 from Data import DBConstants
-
 from DBFSMEvents import (LeftPress, MidPress, RightPress,
                          EditMeasureProperties,
                          MouseMove, MouseRelease,
                          ChangeRepeatCount,
                          SetAlternateEvent)
+
 
 def _painter_saver(method):
     def wrapper(self, painter, *args, **kwargs):
@@ -41,7 +41,9 @@ def _painter_saver(method):
             method(self, painter, *args, **kwargs)
         finally:
             painter.restore()
+
     return wrapper
+
 
 class QMeasure(QtGui.QGraphicsItem):
     """
@@ -146,7 +148,8 @@ class QMeasure(QtGui.QGraphicsItem):
     @_painter_saver
     def _paintHighlight(self, painter, xValues):
         noteTime, drumIndex = self._highlight
-        baseline = (self.numLines() - drumIndex - 1) * self._qScore.ySpacing + self._base + self.parentItem().alternateHeight()
+        baseline = (
+                   self.numLines() - drumIndex - 1) * self._qScore.ySpacing + self._base + self.parentItem().alternateHeight()
         countLine = (self.numLines() * self._qScore.ySpacing) + self._base + self.parentItem().alternateHeight()
         x = xValues[noteTime]
         painter.setPen(QtCore.Qt.NoPen)
@@ -220,7 +223,7 @@ class QMeasure(QtGui.QGraphicsItem):
         painter.setFont(font)
         painter.drawText(1, self._base - 2, "%d" % (1 + self._measureCount))
 
-    def paint(self, painter, dummyOption, dummyWidget = None):
+    def paint(self, painter, dummyOption, dummyWidget=None):
         painter.save()
         if self._dragHighlight:
             color = QtGui.QColor(QtCore.Qt.gray).lighter()
@@ -396,13 +399,13 @@ class QMeasure(QtGui.QGraphicsItem):
             event.ignore()
 
     def makeNotePosition(self, noteTime, drumIndex):
-        np = NotePosition(measureIndex = self._index,
-                          noteTime = noteTime,
-                          drumIndex = drumIndex)
+        np = NotePosition(measureIndex=self._index,
+                          noteTime=noteTime,
+                          drumIndex=drumIndex)
         return self.parentItem().augmentNotePosition(np)
 
     def measurePosition(self):
-        np = NotePosition(measureIndex = self._index)
+        np = NotePosition(measureIndex=self._index)
         return self.parentItem().augmentNotePosition(np)
 
     def setAlternate(self):
@@ -423,7 +426,7 @@ class QMeasure(QtGui.QGraphicsItem):
     def alternateText(self):
         return self._measure.alternateText
 
-    def setPotentials(self, notes = None, head = None):
+    def setPotentials(self, notes=None, head=None):
         if notes is None:
             newNotes = []
             self._potentialDrum = None

@@ -23,8 +23,8 @@ Created on 5 Sep 2011
 
 """
 
-class FontOptions(object):
 
+class FontOptions(object):
     def __init__(self):
         self.noteFontSize = 10
         self.noteFont = "MS Shell Dlg 2"

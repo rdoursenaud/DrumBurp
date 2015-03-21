@@ -14,6 +14,7 @@ try:
 except AttributeError:
     _fromUtf8 = lambda s: s
 
+
 class Ui_DefaulKitManager(object):
     def setupUi(self, DefaulKitManager):
         DefaulKitManager.setObjectName(_fromUtf8("DefaulKitManager"))
@@ -49,7 +50,8 @@ class Ui_DefaulKitManager(object):
         self.retranslateUi(DefaulKitManager)
         QtCore.QObject.connect(self.cancelButton, QtCore.SIGNAL(_fromUtf8("clicked()")), DefaulKitManager.reject)
         QtCore.QObject.connect(self.openButton, QtCore.SIGNAL(_fromUtf8("clicked()")), DefaulKitManager.accept)
-        QtCore.QObject.connect(self.defaultKitList, QtCore.SIGNAL(_fromUtf8("itemDoubleClicked(QListWidgetItem*)")), DefaulKitManager.accept)
+        QtCore.QObject.connect(self.defaultKitList, QtCore.SIGNAL(_fromUtf8("itemDoubleClicked(QListWidgetItem*)")),
+                               DefaulKitManager.accept)
         QtCore.QMetaObject.connectSlotsByName(DefaulKitManager)
         DefaulKitManager.setTabOrder(self.defaultKitList, self.saveButton)
         DefaulKitManager.setTabOrder(self.saveButton, self.overwriteButton)
@@ -58,21 +60,45 @@ class Ui_DefaulKitManager(object):
         DefaulKitManager.setTabOrder(self.openButton, self.cancelButton)
 
     def retranslateUi(self, DefaulKitManager):
-        DefaulKitManager.setWindowTitle(QtGui.QApplication.translate("DefaulKitManager", "Default Kit Manager", None, QtGui.QApplication.UnicodeUTF8))
-        self.defaultKitList.setToolTip(QtGui.QApplication.translate("DefaulKitManager", "Available default kits", None, QtGui.QApplication.UnicodeUTF8))
-        self.defaultKitList.setWhatsThis(QtGui.QApplication.translate("DefaulKitManager", "<html><head/><body><p><span style=\" font-weight:600;\">Default kit list</span></p><p><br/></p><p>Kits listed here can be loaded into the kit editor by double-clicking, or selecting them and clicking the <span style=\" font-style:italic;\">Open</span> button.</p><p><br/></p><p>Kits listed in <span style=\" font-style:italic;\">italics</span> are built into DrumBurp and cannot be overwritten, deleted or renamed.</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.saveButton.setToolTip(QtGui.QApplication.translate("DefaulKitManager", "Save the current kit as a new default", None, QtGui.QApplication.UnicodeUTF8))
-        self.saveButton.setWhatsThis(QtGui.QApplication.translate("DefaulKitManager", "<html><head/><body><p><span style=\" font-weight:600;\">Save a new default kit</span></p><p><br/></p><p>Save the kit currently loaded in the kit editor as a new default. You will be asked a name to save it under, then it will appear in this dialog whenever you run DrumBurp in the future.</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.saveButton.setText(QtGui.QApplication.translate("DefaulKitManager", "Save New", None, QtGui.QApplication.UnicodeUTF8))
-        self.overwriteButton.setToolTip(QtGui.QApplication.translate("DefaulKitManager", "Overwrite this default kit", None, QtGui.QApplication.UnicodeUTF8))
-        self.overwriteButton.setWhatsThis(QtGui.QApplication.translate("DefaulKitManager", "<html><head/><body><p><span style=\" font-weight:600;\">Overwrite this default kit</span></p><p><br/></p><p>The currently selected default kit will be overwritten with the kit currently loaded into the kit editor.</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.overwriteButton.setText(QtGui.QApplication.translate("DefaulKitManager", "Overwrite", None, QtGui.QApplication.UnicodeUTF8))
-        self.deleteButton.setToolTip(QtGui.QApplication.translate("DefaulKitManager", "Delete this default kit", None, QtGui.QApplication.UnicodeUTF8))
-        self.deleteButton.setWhatsThis(QtGui.QApplication.translate("DefaulKitManager", "<html><head/><body><p><span style=\" font-weight:600;\">Delete this default kit</span></p><p><br/></p><p>Delete this default kit from the default kit list. DrumBurp builtin default kits cannot be deleted.</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.deleteButton.setText(QtGui.QApplication.translate("DefaulKitManager", "Delete", None, QtGui.QApplication.UnicodeUTF8))
-        self.openButton.setToolTip(QtGui.QApplication.translate("DefaulKitManager", "Load this default kit", None, QtGui.QApplication.UnicodeUTF8))
-        self.openButton.setWhatsThis(QtGui.QApplication.translate("DefaulKitManager", "<html><head/><body><p><span style=\" font-weight:600;\">Load default kit</span></p><p><br/></p><p>Load the currently selected default kit into the kit editor.</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.openButton.setText(QtGui.QApplication.translate("DefaulKitManager", "Load", None, QtGui.QApplication.UnicodeUTF8))
-        self.cancelButton.setToolTip(QtGui.QApplication.translate("DefaulKitManager", "Cancel this dialog", None, QtGui.QApplication.UnicodeUTF8))
-        self.cancelButton.setText(QtGui.QApplication.translate("DefaulKitManager", "Cancel", None, QtGui.QApplication.UnicodeUTF8))
+        DefaulKitManager.setWindowTitle(QtGui.QApplication.translate("DefaulKitManager", "Default Kit Manager", None,
+                                                                     QtGui.QApplication.UnicodeUTF8))
+        self.defaultKitList.setToolTip(QtGui.QApplication.translate("DefaulKitManager", "Available default kits", None,
+                                                                    QtGui.QApplication.UnicodeUTF8))
+        self.defaultKitList.setWhatsThis(QtGui.QApplication.translate("DefaulKitManager",
+                                                                      "<html><head/><body><p><span style=\" font-weight:600;\">Default kit list</span></p><p><br/></p><p>Kits listed here can be loaded into the kit editor by double-clicking, or selecting them and clicking the <span style=\" font-style:italic;\">Open</span> button.</p><p><br/></p><p>Kits listed in <span style=\" font-style:italic;\">italics</span> are built into DrumBurp and cannot be overwritten, deleted or renamed.</p></body></html>",
+                                                                      None, QtGui.QApplication.UnicodeUTF8))
+        self.saveButton.setToolTip(
+            QtGui.QApplication.translate("DefaulKitManager", "Save the current kit as a new default", None,
+                                         QtGui.QApplication.UnicodeUTF8))
+        self.saveButton.setWhatsThis(QtGui.QApplication.translate("DefaulKitManager",
+                                                                  "<html><head/><body><p><span style=\" font-weight:600;\">Save a new default kit</span></p><p><br/></p><p>Save the kit currently loaded in the kit editor as a new default. You will be asked a name to save it under, then it will appear in this dialog whenever you run DrumBurp in the future.</p></body></html>",
+                                                                  None, QtGui.QApplication.UnicodeUTF8))
+        self.saveButton.setText(
+            QtGui.QApplication.translate("DefaulKitManager", "Save New", None, QtGui.QApplication.UnicodeUTF8))
+        self.overwriteButton.setToolTip(
+            QtGui.QApplication.translate("DefaulKitManager", "Overwrite this default kit", None,
+                                         QtGui.QApplication.UnicodeUTF8))
+        self.overwriteButton.setWhatsThis(QtGui.QApplication.translate("DefaulKitManager",
+                                                                       "<html><head/><body><p><span style=\" font-weight:600;\">Overwrite this default kit</span></p><p><br/></p><p>The currently selected default kit will be overwritten with the kit currently loaded into the kit editor.</p></body></html>",
+                                                                       None, QtGui.QApplication.UnicodeUTF8))
+        self.overwriteButton.setText(
+            QtGui.QApplication.translate("DefaulKitManager", "Overwrite", None, QtGui.QApplication.UnicodeUTF8))
+        self.deleteButton.setToolTip(QtGui.QApplication.translate("DefaulKitManager", "Delete this default kit", None,
+                                                                  QtGui.QApplication.UnicodeUTF8))
+        self.deleteButton.setWhatsThis(QtGui.QApplication.translate("DefaulKitManager",
+                                                                    "<html><head/><body><p><span style=\" font-weight:600;\">Delete this default kit</span></p><p><br/></p><p>Delete this default kit from the default kit list. DrumBurp builtin default kits cannot be deleted.</p></body></html>",
+                                                                    None, QtGui.QApplication.UnicodeUTF8))
+        self.deleteButton.setText(
+            QtGui.QApplication.translate("DefaulKitManager", "Delete", None, QtGui.QApplication.UnicodeUTF8))
+        self.openButton.setToolTip(QtGui.QApplication.translate("DefaulKitManager", "Load this default kit", None,
+                                                                QtGui.QApplication.UnicodeUTF8))
+        self.openButton.setWhatsThis(QtGui.QApplication.translate("DefaulKitManager",
+                                                                  "<html><head/><body><p><span style=\" font-weight:600;\">Load default kit</span></p><p><br/></p><p>Load the currently selected default kit into the kit editor.</p></body></html>",
+                                                                  None, QtGui.QApplication.UnicodeUTF8))
+        self.openButton.setText(
+            QtGui.QApplication.translate("DefaulKitManager", "Load", None, QtGui.QApplication.UnicodeUTF8))
+        self.cancelButton.setToolTip(QtGui.QApplication.translate("DefaulKitManager", "Cancel this dialog", None,
+                                                                  QtGui.QApplication.UnicodeUTF8))
+        self.cancelButton.setText(
+            QtGui.QApplication.translate("DefaulKitManager", "Cancel", None, QtGui.QApplication.UnicodeUTF8))
 

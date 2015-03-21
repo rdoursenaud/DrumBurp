@@ -23,12 +23,15 @@ Created on 4 Jan 2011
 
 """
 
+import itertools
+
 from PyQt4 import QtGui
+
 from QMeasure import QMeasure
 from QMeasureLine import QMeasureLine
 from QLineLabel import QLineLabel
 from Data.NotePosition import NotePosition
-import itertools
+
 
 class QStaff(QtGui.QGraphicsItemGroup):
     """
@@ -36,11 +39,11 @@ class QStaff(QtGui.QGraphicsItemGroup):
     """
 
 
-    def __init__(self, staff, index, scene, qScore = None):
+    def __init__(self, staff, index, scene, qScore=None):
         """
         Constructor
         """
-        super(QStaff, self).__init__(scene = scene)
+        super(QStaff, self).__init__(scene=scene)
         self._qScore = qScore if qScore is not None else scene
         self._props = self._qScore.displayProperties
         self._staff = None
@@ -96,8 +99,8 @@ class QStaff(QtGui.QGraphicsItemGroup):
             self._addLineLabel(drum)
         for measure in self._staff:
             if (not self._hasAlternate and
-                (measure.alternateText or
-                 (measure.isRepeatEnd() and measure.repeatCount > 2))):
+                    (measure.alternateText or
+                         (measure.isRepeatEnd() and measure.repeatCount > 2))):
                 self._hasAlternate = True
         lastMeasure = None
         for measure in self._staff:
@@ -117,7 +120,7 @@ class QStaff(QtGui.QGraphicsItemGroup):
     def _addMeasure(self, measure):
         qMeasure = QMeasure(self.numMeasures(), self._qScore,
                             measure,
-                            parent = self)
+                            parent=self)
         self._measures.append(qMeasure)
         self.addToGroup(qMeasure)
 
@@ -126,7 +129,7 @@ class QStaff(QtGui.QGraphicsItemGroup):
                                     lastMeasure, nextMeasure,
                                     len(self._measureLines),
                                     self._index,
-                                    parent = self)
+                                    parent=self)
         self._measureLines.append(qMeasureLine)
         self.addToGroup(qMeasureLine)
 
@@ -210,7 +213,7 @@ class QStaff(QtGui.QGraphicsItemGroup):
             self._build()
 
     def _makeNotePosition(self):
-        np = NotePosition(staffIndex = self._index)
+        np = NotePosition(staffIndex=self._index)
         return np
 
     def augmentNotePosition(self, np):
@@ -236,7 +239,7 @@ class QStaff(QtGui.QGraphicsItemGroup):
         newAlternate = False
         for measure in self._staff:
             if (measure.alternateText or
-                (measure.isRepeatEnd() and measure.repeatCount > 2)):
+                    (measure.isRepeatEnd() and measure.repeatCount > 2)):
                 newAlternate = True
                 break
         return self._hasAlternate != newAlternate

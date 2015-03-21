@@ -25,6 +25,7 @@ Created on 12 Mar 2011
 from QMetaDataDialog import QMetadataDialog
 from QGraphicsListData import QGraphicsListData
 
+
 class QMetaData(QGraphicsListData):
     """
     classdocs
@@ -54,8 +55,8 @@ class QMetaData(QGraphicsListData):
         dialog = QMetadataDialog(self._qScore, self.scene().parent())
         if dialog.exec_():
             changed = any((getattr(self._qScore, attribute) != value
-                          for (attribute, value) in
-                          dialog.getValues().iteritems()))
+                           for (attribute, value) in
+                           dialog.getValues().iteritems()))
             if not changed:
                 return
             self._qScore.beginMacro("Set Score Information", False)

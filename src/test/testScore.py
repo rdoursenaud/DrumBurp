@@ -23,11 +23,13 @@ Created on 12 Dec 2010
 """
 import unittest
 from cStringIO import StringIO
+
 from Data.Score import Score, InconsistentRepeats, ScoreFactory
 from Data import DrumKit, Drum, DBErrors
 from Data.DBErrors import BadTimeError, OverSizeMeasure
 from Data.DBConstants import EMPTY_NOTE
 from Data.NotePosition import NotePosition
+
 
 # pylint: disable-msg=R0904
 
@@ -219,6 +221,7 @@ class TestMeasureControl(unittest.TestCase):
         self.assertRaises(BadTimeError, self.score.insertMeasureByPosition,
                           16, NotePosition(0, 4))
 
+
 class TestNoteControl(unittest.TestCase):
     def setUp(self):
         self.score = Score()
@@ -354,6 +357,7 @@ class TestNoteControl(unittest.TestCase):
         self.assertEqual(self.score.getItemAtPosition(NotePosition(0, 0, 0, 0)),
                          EMPTY_NOTE)
 
+
 class TestFormatScore(unittest.TestCase):
     def setUp(self):
         self.score = Score()
@@ -419,7 +423,7 @@ class TestFormatScore(unittest.TestCase):
         self.score.insertMeasureByIndex(80)
         for dummy in range(0, 12):
             self.score.insertMeasureByIndex(16)
-        self.score.formatScore(80, ignoreErrors = True)
+        self.score.formatScore(80, ignoreErrors=True)
         self.assertEqual(self.score.numStaffs(), 7)
         self.assertEqual(self.score.getStaff(3).gridWidth(), 82)
 
@@ -430,7 +434,7 @@ class TestFormatScore(unittest.TestCase):
         for dummy in range(0, 12):
             self.score.insertMeasureByIndex(16)
         self.assertRaises(OverSizeMeasure, self.score.formatScore, 80,
-                          ignoreErrors = False)
+                          ignoreErrors=False)
 
     def testFormatScore_FewerStaffsAfterDelete(self):
         for dummy in range(0, 9):
@@ -506,6 +510,7 @@ class TestFormatScore(unittest.TestCase):
                          [self.score.getMeasurePosition(i)
                           for i in xrange(7, 0, -1)])
 
+
 class TestCopyPaste(unittest.TestCase):
     def setUp(self):
         self.score = Score()
@@ -532,7 +537,7 @@ class TestIteration(unittest.TestCase):
         for index in range(0, 26):
             self.score.insertMeasureByIndex(16)
             measure = self.score.getMeasure(index)
-            measure.addNote(NotePosition(noteTime = 0, drumIndex = 0),
+            measure.addNote(NotePosition(noteTime=0, drumIndex=0),
                             chr(ord("a") + index))
         self.score.formatScore(80)
 
@@ -641,7 +646,7 @@ class TestSections(unittest.TestCase):
         for index in range(0, 26):
             self.score.insertMeasureByIndex(16)
             measure = self.score.getMeasure(index)
-            measure.addNote(NotePosition(noteTime = 0, drumIndex = 0),
+            measure.addNote(NotePosition(noteTime=0, drumIndex=0),
                             chr(ord("a") + index))
         self.score.formatScore(80)
 
@@ -786,6 +791,7 @@ class TestSections(unittest.TestCase):
         self.score.deleteSection(NotePosition(6, 0))
         self.assertEqual(self.score.numSections(), 3)
 
+
 class TestRelativePositions(unittest.TestCase):
     def setUp(self):
         self.score = Score()
@@ -793,7 +799,7 @@ class TestRelativePositions(unittest.TestCase):
         for index in range(0, 26):
             self.score.insertMeasureByIndex(16)
             measure = self.score.getMeasure(index)
-            measure.addNote(NotePosition(noteTime = 0, drumIndex = 0),
+            measure.addNote(NotePosition(noteTime=0, drumIndex=0),
                             chr(ord("a") + index))
         self.score.formatScore(80)
 
@@ -853,6 +859,7 @@ class TestRelativePositions(unittest.TestCase):
                           NotePosition(6, 2))
         self.assertRaises(BadTimeError, self.score.nextMeasure,
                           NotePosition(8, 3))
+
 
 class TestVisibleLines(unittest.TestCase):
     def setUp(self):
@@ -1024,6 +1031,7 @@ class TestVisibleLines(unittest.TestCase):
                           self.score.drumKit[3],
                           self.score.drumKit[4]])
 
+
 class TestWrite(unittest.TestCase):
     @staticmethod
     def getOutput(score):
@@ -1090,11 +1098,13 @@ class TestCallBack(unittest.TestCase):
             self.score.insertMeasureByIndex(16)
         self.score.formatScore(80)
         self.calls = []
+
         def myCallBack(position):
             self.calls.append((position.staffIndex,
                                position.measureIndex,
                                position.noteTime,
                                position.drumIndex))
+
         self.score.setCallBack(myCallBack)
 
     def testAddNoteCallBack(self):
@@ -1136,10 +1146,10 @@ class TestCallBack(unittest.TestCase):
 
     def testClearCallBack(self):
         self.score.clearCallBack()
-        self.score.addNote(NotePosition(staffIndex = 0,
-                                        measureIndex = 0,
-                                        noteTime = 0,
-                                        drumIndex = 0), "x")
+        self.score.addNote(NotePosition(staffIndex=0,
+                                        measureIndex=0,
+                                        noteTime=0,
+                                        drumIndex=0), "x")
         self.assertEqual(len(self.calls), 0)
 
     def testTurnOnOff(self):
@@ -1155,6 +1165,7 @@ class TestCallBack(unittest.TestCase):
         self.score.toggleNote(np, "x")
         self.assertEqual(len(self.calls), 2)
 
+
 class TestHash(unittest.TestCase):
     def setUp(self):
         self.score = Score()
@@ -1166,6 +1177,7 @@ class TestHash(unittest.TestCase):
         hash_val = self.score.hashScore()
         self.assertEqual(hash_val.encode("hex"),
                          "cba71883bc214fefb62ca2b86c0f23ae")
+
 
 class TestRead(unittest.TestCase):
     ff_zero_data = """
@@ -1398,6 +1410,7 @@ class TestRead(unittest.TestCase):
         score = Score()
         self.assertRaises(DBErrors.DBVersionError, score.read, handle)
 
+
 class TestScoreFactory(unittest.TestCase):
     def testMakeEmptyDefault(self):
         score = ScoreFactory.makeEmptyScore(16, None, None)
@@ -1407,6 +1420,7 @@ class TestScoreFactory(unittest.TestCase):
         factory = ScoreFactory()
         score = factory()
         self.assertEqual(score.numMeasures(), 32)
+
 
 if __name__ == "__main__":
     unittest.main()

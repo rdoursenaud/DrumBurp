@@ -23,10 +23,12 @@ Created on 20 Jan 2011
 
 """
 
-from ui_measurePropertiesDialog import Ui_measurePropertiesDialog
 from PyQt4.QtGui import QDialog
+
+from ui_measurePropertiesDialog import Ui_measurePropertiesDialog
 import Data.MeasureCount
 from QComplexCountDialog import QComplexCountDialog
+
 
 class QEditMeasureDialog(QDialog, Ui_measurePropertiesDialog):
     """
@@ -37,11 +39,11 @@ class QEditMeasureDialog(QDialog, Ui_measurePropertiesDialog):
     def __init__(self, measureCount,
                  defaultCounter,
                  counterRegistry,
-                 parent = None):
+                 parent=None):
         """
         Constructor
         """
-        super(QEditMeasureDialog, self).__init__(parent = parent)
+        super(QEditMeasureDialog, self).__init__(parent=parent)
         self.setupUi(self)
         self.measureTabs.setup(measureCount,
                                counterRegistry,

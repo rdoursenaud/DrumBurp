@@ -23,7 +23,9 @@ Created on 12 Dec 2012
 """
 import unittest
 from cStringIO import StringIO
+
 from Data import Beat, Counter, fileUtils, DBErrors
+
 
 # pylint: disable-msg=R0904
 
@@ -64,6 +66,7 @@ class TestFullBeat(unittest.TestCase):
                           "  COUNT |^e+a|",
                           "BEAT_END"])
 
+
 class TestPartialBeat(unittest.TestCase):
     beat = Beat.Beat(Counter.Counter(Counter.BEAT_COUNT + "e+a"), 2)
 
@@ -101,6 +104,7 @@ class TestPartialBeat(unittest.TestCase):
                           "  NUM_TICKS 2",
                           "  COUNT |^e+a|",
                           "BEAT_END"])
+
 
 class TestReadBeats(unittest.TestCase):
     def testReadFull(self):
@@ -151,6 +155,7 @@ class TestReadBeats(unittest.TestCase):
         BEAT_END""")
         iterator = fileUtils.dbFileIterator(handle)
         self.assertRaises(DBErrors.UnrecognisedLine, Beat.Beat.read, iterator)
+
 
 if __name__ == "__main__":
     unittest.main()

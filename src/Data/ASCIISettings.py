@@ -22,6 +22,7 @@ Created on Jan 30, 2011
 @author: Mike
 """
 
+
 class ASCIISettings(object):
     """
     classdocs
@@ -41,7 +42,7 @@ class ASCIISettings(object):
         self._registerCheckName("emptyLineBeforeSection")
         self._registerCheckName("emptyLineAfterSection")
 
-    def _registerCheckName(self, name, defaultValue = True):
+    def _registerCheckName(self, name, defaultValue=True):
         setattr(self, name, defaultValue)
         self._checkNames.append(name)
 

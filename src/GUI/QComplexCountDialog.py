@@ -30,13 +30,14 @@ from Data.Beat import Beat
 from Data.MeasureCount import MeasureCount
 from ui_DBComplextCountDialog import Ui_complexCountDialog
 
+
 class QComplexCountDialog(QDialog, Ui_complexCountDialog):
     """
     classdocs
     """
 
 
-    def __init__(self, registry, measureCount, parent = None):
+    def __init__(self, registry, measureCount, parent=None):
         """
         Constructor
         """

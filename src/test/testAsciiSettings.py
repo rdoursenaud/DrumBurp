@@ -22,7 +22,9 @@ Created on 12 Dec 2012
 @author: Mike Thomas
 """
 import unittest
+
 import Data.ASCIISettings as ASCIISettings
+
 # pylint: disable-msg=R0904
 
 class TestAsciiSettings(unittest.TestCase):

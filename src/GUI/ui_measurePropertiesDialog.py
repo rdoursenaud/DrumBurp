@@ -14,6 +14,7 @@ try:
 except AttributeError:
     _fromUtf8 = lambda s: s
 
+
 class Ui_measurePropertiesDialog(object):
     def setupUi(self, measurePropertiesDialog):
         measurePropertiesDialog.setObjectName(_fromUtf8("measurePropertiesDialog"))
@@ -39,7 +40,8 @@ class Ui_measurePropertiesDialog(object):
         self.horizontalLayout.addItem(spacerItem)
         self.buttonBox = QtGui.QDialogButtonBox(measurePropertiesDialog)
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok|QtGui.QDialogButtonBox.Reset|QtGui.QDialogButtonBox.RestoreDefaults)
+        self.buttonBox.setStandardButtons(
+            QtGui.QDialogButtonBox.Cancel | QtGui.QDialogButtonBox.Ok | QtGui.QDialogButtonBox.Reset | QtGui.QDialogButtonBox.RestoreDefaults)
         self.buttonBox.setCenterButtons(False)
         self.buttonBox.setObjectName(_fromUtf8("buttonBox"))
         self.horizontalLayout.addWidget(self.buttonBox)
@@ -51,7 +53,12 @@ class Ui_measurePropertiesDialog(object):
         QtCore.QMetaObject.connectSlotsByName(measurePropertiesDialog)
 
     def retranslateUi(self, measurePropertiesDialog):
-        measurePropertiesDialog.setWindowTitle(QtGui.QApplication.translate("measurePropertiesDialog", "Measure Properties", None, QtGui.QApplication.UnicodeUTF8))
-        self.measureTabs.setToolTip(QtGui.QApplication.translate("measurePropertiesDialog", "Select the count for the measure", None, QtGui.QApplication.UnicodeUTF8))
+        measurePropertiesDialog.setWindowTitle(
+            QtGui.QApplication.translate("measurePropertiesDialog", "Measure Properties", None,
+                                         QtGui.QApplication.UnicodeUTF8))
+        self.measureTabs.setToolTip(
+            QtGui.QApplication.translate("measurePropertiesDialog", "Select the count for the measure", None,
+                                         QtGui.QApplication.UnicodeUTF8))
+
 
 from Widgets.measureTabs_plugin import measureTabs

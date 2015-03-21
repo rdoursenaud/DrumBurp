@@ -24,13 +24,16 @@ Created on 17 Apr 2011
 """
 
 from PyQt4.QtDesigner import QPyDesignerCustomWidgetPlugin
+
 from measureTabs import measureTabs
+
 
 class measureTabs_plugin(QPyDesignerCustomWidgetPlugin):
     """
     classdocs
     """
-    def __init__(self, parent = None):
+
+    def __init__(self, parent=None):
         super(measureTabs_plugin, self).__init__(parent)
         self.initialized = False
 

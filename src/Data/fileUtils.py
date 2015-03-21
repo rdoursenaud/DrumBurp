@@ -24,9 +24,10 @@ Created on 7 Oct 2012
 
 import DBErrors
 
+
 class dbFileIterator(object):
     class _Section(object):
-        def __init__(self, iterator, startLine, endLine, convertNone = None, readLines = None):
+        def __init__(self, iterator, startLine, endLine, convertNone=None, readLines=None):
             self._iterator = iterator
             self._startLine = startLine
             self._endLine = endLine
@@ -146,7 +147,7 @@ class dbFileIterator(object):
             lineType = lineType.upper()
             yield lineType, lineData
 
-    def section(self, startLine, endLine, convertNone = None, readLines = None):
+    def section(self, startLine, endLine, convertNone=None, readLines=None):
         return self._Section(self, startLine, endLine, convertNone, readLines)
 
 
@@ -167,7 +168,7 @@ class Indenter(object):
             self.indenter(self.end)
             return False
 
-    def __init__(self, handle, indent = "  "):
+    def __init__(self, handle, indent="  "):
         self._indent = indent
         self._handle = handle
         self._level = 0

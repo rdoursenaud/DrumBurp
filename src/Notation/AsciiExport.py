@@ -21,14 +21,17 @@ Created on Dec 15, 2012
 
 @author: Mike Thomas
 """
+import time
+
 from Data.DBConstants import (REPEAT_EXTENDER, BARLINE, DRUM_ABBR_WIDTH,
                               EMPTY_NOTE, REPEAT_END, REPEAT_STARTER,
                               ALTERNATE_EXTENDER)
 from Data.NotePosition import NotePosition
-import time
+
 
 def getExportDate():
     return time.strftime("%d %B %Y")
+
 
 class Exporter(object):
     def __init__(self, score, settings):
@@ -89,7 +92,6 @@ class Exporter(object):
         return countString
 
 
-
     def _measureBegin(self, repeatString, measure, lastMeasure, delta):
         if not self._isRepeating:
             if measure and measure.isRepeatStart():
@@ -100,7 +102,7 @@ class Exporter(object):
                 self._repeatExtender = REPEAT_EXTENDER
                 repeatString += REPEAT_STARTER
             elif (lastMeasure and
-                lastMeasure.isRepeatEnd()):
+                      lastMeasure.isRepeatEnd()):
                 repeatString += REPEAT_END
             elif measure:
                 repeatString += " "
@@ -196,7 +198,7 @@ class Exporter(object):
                 newSection = False
                 if sectionIndex < self.score.numSections():
                     if (len(asciiString) > 0 and
-                        self.settings.emptyLineBeforeSection):
+                            self.settings.emptyLineBeforeSection):
                         asciiString.append("")
                     title = self.score.getSectionTitle(sectionIndex)
                     asciiString.append(title)

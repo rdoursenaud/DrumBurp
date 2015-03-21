@@ -24,7 +24,9 @@ Created on 17 Apr 2011
 """
 
 from PyQt4.QtGui import QDialog
+
 from ui_dbLicense import Ui_dbLicense_dialog
+
 
 class DBLicenseDialog(QDialog, Ui_dbLicense_dialog):
     """
@@ -32,7 +34,7 @@ class DBLicenseDialog(QDialog, Ui_dbLicense_dialog):
     """
 
 
-    def __init__(self, parent = None):
+    def __init__(self, parent=None):
         """
         Constructor
         """

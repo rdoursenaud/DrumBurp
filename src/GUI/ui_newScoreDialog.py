@@ -14,6 +14,7 @@ try:
 except AttributeError:
     _fromUtf8 = lambda s: s
 
+
 class Ui_newScoreDialog(object):
     def setupUi(self, newScoreDialog):
         newScoreDialog.setObjectName(_fromUtf8("newScoreDialog"))
@@ -27,7 +28,7 @@ class Ui_newScoreDialog(object):
         self.gridLayout.setVerticalSpacing(6)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
         self.label = QtGui.QLabel(newScoreDialog)
-        self.label.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.label.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
         self.label.setObjectName(_fromUtf8("label"))
         self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
         self.numMeasuresSpinBox = QtGui.QSpinBox(newScoreDialog)
@@ -57,7 +58,7 @@ class Ui_newScoreDialog(object):
         self.horizontalLayout.addItem(spacerItem2)
         self.buttonBox = QtGui.QDialogButtonBox(newScoreDialog)
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
+        self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel | QtGui.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName(_fromUtf8("buttonBox"))
         self.horizontalLayout.addWidget(self.buttonBox)
         self.verticalLayout.addLayout(self.horizontalLayout)
@@ -72,13 +73,26 @@ class Ui_newScoreDialog(object):
         newScoreDialog.setTabOrder(self.kitCombobox, self.buttonBox)
 
     def retranslateUi(self, newScoreDialog):
-        newScoreDialog.setWindowTitle(QtGui.QApplication.translate("newScoreDialog", "New Score", None, QtGui.QApplication.UnicodeUTF8))
-        self.label.setToolTip(QtGui.QApplication.translate("newScoreDialog", "The number of measures in the new score", None, QtGui.QApplication.UnicodeUTF8))
-        self.label.setText(QtGui.QApplication.translate("newScoreDialog", "Number of measures", None, QtGui.QApplication.UnicodeUTF8))
-        self.numMeasuresSpinBox.setToolTip(QtGui.QApplication.translate("newScoreDialog", "The number of measures in the new score", None, QtGui.QApplication.UnicodeUTF8))
-        self.numMeasuresSpinBox.setStatusTip(QtGui.QApplication.translate("newScoreDialog", "The number of measures in the new score", None, QtGui.QApplication.UnicodeUTF8))
-        self.numMeasuresSpinBox.setSuffix(QtGui.QApplication.translate("newScoreDialog", " measures", None, QtGui.QApplication.UnicodeUTF8))
-        self.measureTabs.setToolTip(QtGui.QApplication.translate("newScoreDialog", "The default measure count for the new score", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_2.setText(QtGui.QApplication.translate("newScoreDialog", "Drum kit", None, QtGui.QApplication.UnicodeUTF8))
+        newScoreDialog.setWindowTitle(
+            QtGui.QApplication.translate("newScoreDialog", "New Score", None, QtGui.QApplication.UnicodeUTF8))
+        self.label.setToolTip(
+            QtGui.QApplication.translate("newScoreDialog", "The number of measures in the new score", None,
+                                         QtGui.QApplication.UnicodeUTF8))
+        self.label.setText(
+            QtGui.QApplication.translate("newScoreDialog", "Number of measures", None, QtGui.QApplication.UnicodeUTF8))
+        self.numMeasuresSpinBox.setToolTip(
+            QtGui.QApplication.translate("newScoreDialog", "The number of measures in the new score", None,
+                                         QtGui.QApplication.UnicodeUTF8))
+        self.numMeasuresSpinBox.setStatusTip(
+            QtGui.QApplication.translate("newScoreDialog", "The number of measures in the new score", None,
+                                         QtGui.QApplication.UnicodeUTF8))
+        self.numMeasuresSpinBox.setSuffix(
+            QtGui.QApplication.translate("newScoreDialog", " measures", None, QtGui.QApplication.UnicodeUTF8))
+        self.measureTabs.setToolTip(
+            QtGui.QApplication.translate("newScoreDialog", "The default measure count for the new score", None,
+                                         QtGui.QApplication.UnicodeUTF8))
+        self.label_2.setText(
+            QtGui.QApplication.translate("newScoreDialog", "Drum kit", None, QtGui.QApplication.UnicodeUTF8))
+
 
 from Widgets.measureTabs_plugin import measureTabs

@@ -28,6 +28,7 @@ from Counter import CounterRegistry
 
 MIDITICKSPERBEAT = 192
 
+
 class MeasureCount(object):
     def __init__(self):
         self.beats = []
@@ -60,7 +61,7 @@ class MeasureCount(object):
     def iterBeatTicks(self):
         for (beatNum, beat) in enumerate(self.beats):
             for tick in beat.iterTicks():
-                yield(beatNum, beat, tick)
+                yield (beatNum, beat, tick)
 
     def iterBeatTickPositions(self):
         tick = 0
@@ -110,7 +111,7 @@ class MeasureCount(object):
     def numBeats(self):
         return len(self.beats)
 
-    def write(self, indenter, default = False):
+    def write(self, indenter, default=False):
         title = "COUNT_INFO_START"
         if default:
             title = "DEFAULT_" + title
@@ -123,13 +124,15 @@ class MeasureCount(object):
                 for beat in self.beats:
                     beat.write(indenter)
 
-    def read(self, scoreIterator, default = False):
+    def read(self, scoreIterator, default=False):
         title = "COUNT_INFO_START"
         if default:
             title = "DEFAULT_" + title
         self.beats = []
+
         class RepeatTracker(object):
             repeat = False
+
             @classmethod
             def readBeat(cls, unused):
                 beat = Beat.read(scoreIterator)
@@ -137,10 +140,12 @@ class MeasureCount(object):
                     self.beats.extend([beat] * cls.repeat)
                 else:
                     self.beats.append(beat)
+
         tracker = RepeatTracker
         with scoreIterator.section(title, "COUNT_INFO_END") as section:
             section.readPositiveInteger("REPEAT_BEATS", tracker, "repeat")
             section.readCallback("BEAT_START", tracker.readBeat)
+
 
 def counterMaker(beatLength, numTicks):
     # Create a MeasureCount from an 'old style' specification, where
@@ -153,6 +158,7 @@ def counterMaker(beatLength, numTicks):
     mc = MeasureCount()
     mc.addSimpleBeats(count, numTicks / beatLength)
     return mc
+
 
 def makeSimpleCount(counter, numBeats):
     mc = MeasureCount()

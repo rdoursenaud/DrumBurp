@@ -23,7 +23,9 @@ Created on Jan 30, 2011
 """
 
 from PyQt4.QtGui import QDialog
+
 from ui_repeatCountDialog import Ui_repeatCountDialog
+
 
 class QRepeatCountDialog(QDialog, Ui_repeatCountDialog):
     """
@@ -31,11 +33,11 @@ class QRepeatCountDialog(QDialog, Ui_repeatCountDialog):
     """
 
 
-    def __init__(self, repeatCount, parent = None):
+    def __init__(self, repeatCount, parent=None):
         """
         Constructor
         """
-        super(QRepeatCountDialog, self).__init__(parent = parent)
+        super(QRepeatCountDialog, self).__init__(parent=parent)
         self._repeatCount = repeatCount
         self.setupUi(self)
         self.countBox.setValue(repeatCount)

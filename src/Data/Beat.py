@@ -24,9 +24,11 @@ Created on 16 Apr 2011
 """
 
 import itertools
+
 from Counter import CounterRegistry
 from DBConstants import BEAT_COUNT
 import DBErrors
+
 
 class Beat(object):
     """A Beat is a measured instance of a Counter.
@@ -35,7 +37,8 @@ class Beat(object):
     reflect partial beats at the end of a Measure. A sequence of Beats makes
     up a MeasureCount.
     """
-    def __init__(self, counter, numTicks = None):
+
+    def __init__(self, counter, numTicks=None):
         self.counter = counter
         if numTicks is None:
             numTicks = self.ticksPerBeat
@@ -79,8 +82,9 @@ class Beat(object):
 
     @staticmethod
     def read(scoreIterator):
-        targetValues = {"numTicks" : None, "counter" : None }
+        targetValues = {"numTicks": None, "counter": None}
         registry = CounterRegistry()
+
         def readCount(lineData):
             if lineData[0] == "|" and lineData[-1] == "|":
                 lineData = lineData[1:-1]
@@ -89,6 +93,7 @@ class Beat(object):
                 targetValues["counter"] = registry.findMaster(lineData)
             except KeyError:
                 raise DBErrors.BadCount(scoreIterator)
+
         with scoreIterator.section("BEAT_START", "BEAT_END") as section:
             section.readPositiveInteger("NUM_TICKS", targetValues, "numTicks")
             section.readCallback("COUNT", readCount)

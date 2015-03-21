@@ -14,6 +14,7 @@ try:
 except AttributeError:
     _fromUtf8 = lambda s: s
 
+
 class Ui_AlternateDialog(object):
     def setupUi(self, AlternateDialog):
         AlternateDialog.setObjectName(_fromUtf8("AlternateDialog"))
@@ -35,7 +36,7 @@ class Ui_AlternateDialog(object):
         self.repeatsFrame.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
         self.repeatsFrame.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.repeatsFrame.setWidgetResizable(True)
-        self.repeatsFrame.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
+        self.repeatsFrame.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignTop)
         self.repeatsFrame.setObjectName(_fromUtf8("repeatsFrame"))
         self.scrollAreaWidgetContents = QtGui.QWidget()
         self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 465, 134))
@@ -57,7 +58,7 @@ class Ui_AlternateDialog(object):
         self.verticalLayout.addWidget(self.repeatsFrame)
         self.buttonBox = QtGui.QDialogButtonBox(AlternateDialog)
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
+        self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel | QtGui.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName(_fromUtf8("buttonBox"))
         self.verticalLayout.addWidget(self.buttonBox)
 
@@ -67,8 +68,12 @@ class Ui_AlternateDialog(object):
         QtCore.QMetaObject.connectSlotsByName(AlternateDialog)
 
     def retranslateUi(self, AlternateDialog):
-        AlternateDialog.setWindowTitle(QtGui.QApplication.translate("AlternateDialog", "Alternate Repeats", None, QtGui.QApplication.UnicodeUTF8))
-        self.label.setText(QtGui.QApplication.translate("AlternateDialog", "Enter alternate repeat information:", None, QtGui.QApplication.UnicodeUTF8))
-        self.addButton.setToolTip(QtGui.QApplication.translate("AlternateDialog", "Add a new repeat", None, QtGui.QApplication.UnicodeUTF8))
-        self.addButton.setText(QtGui.QApplication.translate("AlternateDialog", "Add", None, QtGui.QApplication.UnicodeUTF8))
+        AlternateDialog.setWindowTitle(
+            QtGui.QApplication.translate("AlternateDialog", "Alternate Repeats", None, QtGui.QApplication.UnicodeUTF8))
+        self.label.setText(QtGui.QApplication.translate("AlternateDialog", "Enter alternate repeat information:", None,
+                                                        QtGui.QApplication.UnicodeUTF8))
+        self.addButton.setToolTip(
+            QtGui.QApplication.translate("AlternateDialog", "Add a new repeat", None, QtGui.QApplication.UnicodeUTF8))
+        self.addButton.setText(
+            QtGui.QApplication.translate("AlternateDialog", "Add", None, QtGui.QApplication.UnicodeUTF8))
 

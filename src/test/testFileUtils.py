@@ -23,7 +23,9 @@ Created on 12 Dec 2012
 """
 import unittest
 from cStringIO import StringIO
+
 from Data import fileUtils, DBErrors
+
 
 # pylint: disable-msg=R0904
 
@@ -83,11 +85,15 @@ class TestDbFileIterator(unittest.TestCase):
             section.readBoolean("BOOL2", _Target, "b2")
             section.readPositiveInteger("POSINT", _Target, "pi")
             section.readNonNegativeInteger("NNINT", _Target, "nni")
+
             def reader(subiterator):
                 _Target.sub_read = subiterator
+
             section.readSubsection("SUBSECTION", reader)
+
             def getlength(data):
                 _Target.cb = len(data)
+
             section.readCallback("CALLBACK", getlength)
         self.assertEqual(_Target.s1, "string1")
         self.assertEqual(_Target.s2, "string2")
@@ -129,11 +135,15 @@ class TestDbFileIterator(unittest.TestCase):
             section.readBoolean("BOOL2", target, "b2")
             section.readPositiveInteger("POSINT", target, "pi")
             section.readNonNegativeInteger("NNINT", target, "nni")
+
             def reader(subiterator):
                 target["sub_read"] = subiterator
+
             section.readSubsection("SUBSECTION", reader)
+
             def getlength(data):
                 target["cb"] = len(data)
+
             section.readCallback("CALLBACK", getlength)
         self.assertEqual(target["s1"], "string1")
         self.assertEqual(target["s2"], "string2")
@@ -251,8 +261,8 @@ class TestDbFileIterator(unittest.TestCase):
             errorRaised = True
         self.assert_(errorRaised)
 
-class TestIndenter(unittest.TestCase):
 
+class TestIndenter(unittest.TestCase):
     def setUp(self):
         self.handle = StringIO()
         self.indenter = fileUtils.Indenter(self.handle)

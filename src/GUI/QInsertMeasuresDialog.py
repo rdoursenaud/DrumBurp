@@ -21,15 +21,18 @@ Created on 9 Jan 2011
 
 @author: Mike Thomas
 """
-from ui_insertMeasuresDialog import Ui_InsertMeasuresDialog
 from PyQt4.QtGui import QDialog
+
+from ui_insertMeasuresDialog import Ui_InsertMeasuresDialog
 import Data.MeasureCount
 from QComplexCountDialog import QComplexCountDialog
+
 
 class QInsertMeasuresDialog(QDialog, Ui_InsertMeasuresDialog):
     """
     classdocs
     """
+
     def __init__(self, parent, measureCount, counterRegistry):
         """
         Constructor

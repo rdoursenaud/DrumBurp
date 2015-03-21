@@ -10,6 +10,7 @@ DB_VERSION = "0.10"
 if not FULL_RELEASE:
     DB_VERSION += _ALPHA_STRING
 
+
 def versionStringToTuple(vstr):
     vstr = vstr.rstrip(_ALPHA_STRING)
     try:
@@ -21,10 +22,11 @@ def versionStringToTuple(vstr):
 
 def doesNewerVersionExist():
     import urllib2
+
     currentVersion = versionStringToTuple(DB_VERSION)
     try:
         versionUrl = urllib2.urlopen('http://www.whatang.org/latest_db_version',
-                                      timeout = 10)
+                                      timeout=10)
         versionString = versionUrl.read()
         newVersion = versionStringToTuple(versionString)
         if currentVersion < newVersion:
@@ -33,6 +35,7 @@ def doesNewerVersionExist():
             return ""
     except urllib2.HTTPError:
         return None
+
 
 if __name__ == "__main__":
     print DB_VERSION

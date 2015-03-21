@@ -30,7 +30,7 @@ class ScoreView(QtGui.QGraphicsView):
     classdocs
     """
 
-    def __init__(self, parent = None):
+    def __init__(self, parent=None):
         super(ScoreView, self).__init__(parent)
         self._props = None
 
@@ -47,6 +47,7 @@ class ScoreView(QtGui.QGraphicsView):
     def setWidth(self, width):
         self.scene().scoreWidth = width
         self.widthChanged.emit(width)
+
     widthChanged = QtCore.pyqtSignal(int)
 
     @QtCore.pyqtSlot(int)

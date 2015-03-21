@@ -23,8 +23,9 @@ Created on 16 Apr 2011
 
 """
 
-
 from DBConstants import BEAT_COUNT
+
+
 class Counter(object):
     """A Counter represents a way of subdividing a single beat.
 
@@ -76,6 +77,7 @@ class Counter(object):
     def write(self, indenter):
         indenter("COUNT", "|" + self._counts + "|")
 
+
 _COUNTER_BEAT = Counter(BEAT_COUNT)
 _EIGHTH_COUNT = Counter(BEAT_COUNT + "+", BEAT_COUNT + "&")
 _TRIPLET_COUNT = Counter(BEAT_COUNT + "+a", BEAT_COUNT + "ea")
@@ -89,8 +91,9 @@ _THIRTY_SECONDS_COUNT_SPARSE = Counter(BEAT_COUNT + ' e + a ')
 _THIRTY_SECONDS_TRIPLET_COUNT = Counter(BEAT_COUNT + '.e.a.+.e.a.')
 _THIRTY_SECONDS_TRIPLET_COUNT_SPARSE = Counter(BEAT_COUNT + ' e a + e a ')
 
+
 class CounterRegistry(object):
-    def __init__(self, defaults = True):
+    def __init__(self, defaults=True):
         self._names = []
         self._counts = {}
         if defaults:
@@ -146,7 +149,7 @@ class CounterRegistry(object):
         for index, (unusedName, count) in enumerate(self):
             if count.matchesAlternative(beatStr):
                 return index
-        return(-1)
+        return (-1)
 
     def findMaster(self, countString):
         index = self.lookupIndex(countString)

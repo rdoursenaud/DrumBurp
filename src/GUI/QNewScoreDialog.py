@@ -23,20 +23,24 @@ Created on 9 Jan 2011
 
 """
 
-from ui_newScoreDialog import Ui_newScoreDialog
+from cStringIO import StringIO
+
 from PyQt4.QtGui import QDialog
 from PyQt4.QtCore import QSettings, QVariant
-from cStringIO import StringIO
+
+from ui_newScoreDialog import Ui_newScoreDialog
 import Data.MeasureCount
 from QComplexCountDialog import QComplexCountDialog
 from Data import DefaultKits, DrumKit, fileUtils
+
 
 class QNewScoreDialog(QDialog, Ui_newScoreDialog):
     """
     classdocs
     """
-    def __init__(self, parent = None,
-                 counter = None, registry = None):
+
+    def __init__(self, parent=None,
+                 counter=None, registry=None):
         """
         Constructor
         """
@@ -45,11 +49,11 @@ class QNewScoreDialog(QDialog, Ui_newScoreDialog):
         self.measureTabs.setup(counter, registry,
                                Data.MeasureCount, QComplexCountDialog)
         for name in DefaultKits.DEFAULT_KIT_NAMES:
-            self.kitCombobox.addItem(name, userData = QVariant(False))
+            self.kitCombobox.addItem(name, userData=QVariant(False))
         self._settings = QSettings()
         self._settings.beginGroup("UserDefaultKits")
         for kitName in self._settings.allKeys():
-            self.kitCombobox.addItem(kitName, userData = QVariant(True))
+            self.kitCombobox.addItem(kitName, userData=QVariant(True))
 
     def getValues(self):
         mc = self.measureTabs.getCounter()

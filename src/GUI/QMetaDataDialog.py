@@ -22,11 +22,13 @@ Created on 12 Mar 2011
 @author: Mike Thomas
 """
 
-from ui_scorePropertiesDialog import Ui_ScoreDialog
 from PyQt4.QtGui import QDialog
 
+from ui_scorePropertiesDialog import Ui_ScoreDialog
+
+
 class QMetadataDialog(QDialog, Ui_ScoreDialog):
-    def __init__(self, qscore, parent = None):
+    def __init__(self, qscore, parent=None):
         super(QMetadataDialog, self).__init__(parent)
         self.setupUi(self)
         self._qscore = qscore
@@ -39,10 +41,10 @@ class QMetadataDialog(QDialog, Ui_ScoreDialog):
         self.bpmVisible.setChecked(qscore.bpmVisible)
 
     def getValues(self):
-        return {"title" : self.titleEdit.text(),
-                "artist" : self.artistEdit.text(),
-                "artistVisible" : self.artistVisible.isChecked(),
+        return {"title": self.titleEdit.text(),
+                "artist": self.artistEdit.text(),
+                "artistVisible": self.artistVisible.isChecked(),
                 "creator": self.creatorEdit.text(),
                 "creatorVisible": self.creatorVisible.isChecked(),
-                "bpm" : self.bpmSpinBox.value(),
-                "bpmVisible":self.bpmVisible.isChecked()}
+                "bpm": self.bpmSpinBox.value(),
+                "bpmVisible": self.bpmVisible.isChecked()}

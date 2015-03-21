@@ -24,7 +24,9 @@ Created on 19 Jan 2011
 """
 
 from PyQt4.QtGui import QMenu
+
 from DBFSMEvents import MenuCancel
+
 
 class QMenuIgnoreCancelClick(QMenu):
     """
@@ -32,7 +34,7 @@ class QMenuIgnoreCancelClick(QMenu):
     """
 
 
-    def __init__(self, qScore, parent = None):
+    def __init__(self, qScore, parent=None):
         """
         Constructor
         """

@@ -23,10 +23,12 @@ Created on 12 Dec 2010
 """
 import unittest
 from cStringIO import StringIO
+
 from Data import DrumKit
 from Data.DBErrors import DuplicateDrumError, NoSuchDrumError
 from Data.Drum import Drum, HeadData
 from Data import fileUtils, DBErrors
+
 # pylint: disable-msg=R0904
 
 class TestDrumKit(unittest.TestCase):
@@ -63,7 +65,7 @@ class TestDrumKit(unittest.TestCase):
         numDrums = len(self.kit)
         self.assert_(numDrums > 0)
         drum = self.kit[0]
-        self.kit.deleteDrum(name = drum.name)
+        self.kit.deleteDrum(name=drum.name)
         self.assertEqual(len(self.kit), numDrums - 1)
         for remainingDrum in self.kit:
             self.assertNotEqual(drum, remainingDrum)
@@ -71,14 +73,14 @@ class TestDrumKit(unittest.TestCase):
     def testDeleteDrumByName_DrumNotFound(self):
         self.kit = DrumKit.getNamedDefaultKit()
         self.assertRaises(NoSuchDrumError,
-                          self.kit.deleteDrum, name = "no such drum")
+                          self.kit.deleteDrum, name="no such drum")
 
     def testDeleteDrumByIndex(self):
         self.kit = DrumKit.getNamedDefaultKit()
         numDrums = len(self.kit)
         self.assert_(numDrums > 0)
         drum = self.kit[0]
-        self.kit.deleteDrum(index = 0)
+        self.kit.deleteDrum(index=0)
         self.assertEqual(len(self.kit), numDrums - 1)
         for remainingDrum in self.kit:
             self.assertNotEqual(drum, remainingDrum)
@@ -86,9 +88,9 @@ class TestDrumKit(unittest.TestCase):
     def testDeleteDrumByIndex_BadIndex(self):
         self.kit = DrumKit.getNamedDefaultKit()
         self.assertRaises(NoSuchDrumError,
-                          self.kit.deleteDrum, index = -1)
+                          self.kit.deleteDrum, index=-1)
         self.assertRaises(NoSuchDrumError,
-                          self.kit.deleteDrum, index = len(self.kit))
+                          self.kit.deleteDrum, index=len(self.kit))
 
     def testRead_NoNoteHeads(self):
         kitData = """KIT_START
@@ -189,14 +191,14 @@ class TestDrumKit(unittest.TestCase):
         drum = Drum("One", "d1", "x", True)
         drum.addNoteHead("x", HeadData())
         drum.addNoteHead("g",
-                         HeadData(effect = "ghost", notationEffect = "ghost"))
+                         HeadData(effect="ghost", notationEffect="ghost"))
         drum.checkShortcuts()
         kit.addDrum(drum)
         drum = Drum("Two", "d2", "o")
-        drum.addNoteHead("o", HeadData(notationLine = -5, stemDirection = 1))
-        drum.addNoteHead("O", HeadData(effect = "accent",
-                                       notationEffect = "accent",
-                                       notationLine = -5, stemDirection = 1))
+        drum.addNoteHead("o", HeadData(notationLine=-5, stemDirection=1))
+        drum.addNoteHead("O", HeadData(effect="accent",
+                                       notationEffect="accent",
+                                       notationLine=-5, stemDirection=1))
         drum.checkShortcuts()
         kit.addDrum(drum)
         handle = StringIO()
@@ -212,5 +214,7 @@ class TestDrumKit(unittest.TestCase):
                           "    NOTEHEAD o 71,96,normal,default,-5,none,1,o",
                           "    NOTEHEAD O 71,96,accent,default,-5,accent,1,a",
                           "KIT_END"])
+
+
 if __name__ == "__main__":
     unittest.main()

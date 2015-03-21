@@ -14,6 +14,7 @@ try:
 except AttributeError:
     _fromUtf8 = lambda s: s
 
+
 class Ui_measureTabs(object):
     def setupUi(self, measureTabs):
         measureTabs.setObjectName(_fromUtf8("measureTabs"))
@@ -45,7 +46,7 @@ class Ui_measureTabs(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
         self.label_2.setSizePolicy(sizePolicy)
-        self.label_2.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.label_2.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
         self.label_2.setObjectName(_fromUtf8("label_2"))
         self.gridLayout.addWidget(self.label_2, 0, 1, 1, 1)
         self.beatsSpinBox = QtGui.QSpinBox(self.simpleTab)
@@ -66,7 +67,7 @@ class Ui_measureTabs(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label_3.sizePolicy().hasHeightForWidth())
         self.label_3.setSizePolicy(sizePolicy)
-        self.label_3.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.label_3.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
         self.label_3.setObjectName(_fromUtf8("label_3"))
         self.gridLayout.addWidget(self.label_3, 1, 1, 1, 1)
         self.beatCountComboBox = QtGui.QComboBox(self.simpleTab)
@@ -113,22 +114,46 @@ class Ui_measureTabs(object):
         QtCore.QMetaObject.connectSlotsByName(measureTabs)
 
     def retranslateUi(self, measureTabs):
-        measureTabs.setWindowTitle(QtGui.QApplication.translate("measureTabs", "Form", None, QtGui.QApplication.UnicodeUTF8))
-        self.simpleTab.setToolTip(QtGui.QApplication.translate("measureTabs", "Edit a simple measure count", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_2.setToolTip(QtGui.QApplication.translate("measureTabs", "The size of each measure in the new score in beats", None, QtGui.QApplication.UnicodeUTF8))
+        measureTabs.setWindowTitle(
+            QtGui.QApplication.translate("measureTabs", "Form", None, QtGui.QApplication.UnicodeUTF8))
+        self.simpleTab.setToolTip(QtGui.QApplication.translate("measureTabs", "Edit a simple measure count", None,
+                                                               QtGui.QApplication.UnicodeUTF8))
+        self.label_2.setToolTip(
+            QtGui.QApplication.translate("measureTabs", "The size of each measure in the new score in beats", None,
+                                         QtGui.QApplication.UnicodeUTF8))
         self.label_2.setText(QtGui.QApplication.translate("measureTabs", "Beats", None, QtGui.QApplication.UnicodeUTF8))
-        self.beatsSpinBox.setToolTip(QtGui.QApplication.translate("measureTabs", "The size of each measure in the new score in beats", None, QtGui.QApplication.UnicodeUTF8))
-        self.beatsSpinBox.setStatusTip(QtGui.QApplication.translate("measureTabs", "The size of each measure in the new score in beats", None, QtGui.QApplication.UnicodeUTF8))
-        self.beatsSpinBox.setSuffix(QtGui.QApplication.translate("measureTabs", " beats", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_3.setToolTip(QtGui.QApplication.translate("measureTabs", "The number of beats in this measure", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_3.setText(QtGui.QApplication.translate("measureTabs", "Beat count", None, QtGui.QApplication.UnicodeUTF8))
-        self.beatCountComboBox.setToolTip(QtGui.QApplication.translate("measureTabs", "The number of beats in this measure", None, QtGui.QApplication.UnicodeUTF8))
-        self.counterTabs.setTabText(self.counterTabs.indexOf(self.simpleTab), QtGui.QApplication.translate("measureTabs", "Simple Count", None, QtGui.QApplication.UnicodeUTF8))
-        self.complexTab.setToolTip(QtGui.QApplication.translate("measureTabs", "Edit a complex measure count", None, QtGui.QApplication.UnicodeUTF8))
-        self.complexEditButton.setToolTip(QtGui.QApplication.translate("measureTabs", "Edit a complex count", None, QtGui.QApplication.UnicodeUTF8))
-        self.complexEditButton.setText(QtGui.QApplication.translate("measureTabs", "Edit Count", None, QtGui.QApplication.UnicodeUTF8))
-        self.counterTabs.setTabText(self.counterTabs.indexOf(self.complexTab), QtGui.QApplication.translate("measureTabs", "Complex Count", None, QtGui.QApplication.UnicodeUTF8))
-        self.groupBox.setToolTip(QtGui.QApplication.translate("measureTabs", "A preview of the measure count currently selected", None, QtGui.QApplication.UnicodeUTF8))
-        self.groupBox.setTitle(QtGui.QApplication.translate("measureTabs", "Preview", None, QtGui.QApplication.UnicodeUTF8))
-        self.previewText.setText(QtGui.QApplication.translate("measureTabs", "TextLabel", None, QtGui.QApplication.UnicodeUTF8))
+        self.beatsSpinBox.setToolTip(
+            QtGui.QApplication.translate("measureTabs", "The size of each measure in the new score in beats", None,
+                                         QtGui.QApplication.UnicodeUTF8))
+        self.beatsSpinBox.setStatusTip(
+            QtGui.QApplication.translate("measureTabs", "The size of each measure in the new score in beats", None,
+                                         QtGui.QApplication.UnicodeUTF8))
+        self.beatsSpinBox.setSuffix(
+            QtGui.QApplication.translate("measureTabs", " beats", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_3.setToolTip(QtGui.QApplication.translate("measureTabs", "The number of beats in this measure", None,
+                                                             QtGui.QApplication.UnicodeUTF8))
+        self.label_3.setText(
+            QtGui.QApplication.translate("measureTabs", "Beat count", None, QtGui.QApplication.UnicodeUTF8))
+        self.beatCountComboBox.setToolTip(
+            QtGui.QApplication.translate("measureTabs", "The number of beats in this measure", None,
+                                         QtGui.QApplication.UnicodeUTF8))
+        self.counterTabs.setTabText(self.counterTabs.indexOf(self.simpleTab),
+                                    QtGui.QApplication.translate("measureTabs", "Simple Count", None,
+                                                                 QtGui.QApplication.UnicodeUTF8))
+        self.complexTab.setToolTip(QtGui.QApplication.translate("measureTabs", "Edit a complex measure count", None,
+                                                                QtGui.QApplication.UnicodeUTF8))
+        self.complexEditButton.setToolTip(
+            QtGui.QApplication.translate("measureTabs", "Edit a complex count", None, QtGui.QApplication.UnicodeUTF8))
+        self.complexEditButton.setText(
+            QtGui.QApplication.translate("measureTabs", "Edit Count", None, QtGui.QApplication.UnicodeUTF8))
+        self.counterTabs.setTabText(self.counterTabs.indexOf(self.complexTab),
+                                    QtGui.QApplication.translate("measureTabs", "Complex Count", None,
+                                                                 QtGui.QApplication.UnicodeUTF8))
+        self.groupBox.setToolTip(
+            QtGui.QApplication.translate("measureTabs", "A preview of the measure count currently selected", None,
+                                         QtGui.QApplication.UnicodeUTF8))
+        self.groupBox.setTitle(
+            QtGui.QApplication.translate("measureTabs", "Preview", None, QtGui.QApplication.UnicodeUTF8))
+        self.previewText.setText(
+            QtGui.QApplication.translate("measureTabs", "TextLabel", None, QtGui.QApplication.UnicodeUTF8))
 

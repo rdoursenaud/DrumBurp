@@ -18,7 +18,9 @@
 # along with DrumBurp.  If not, see <http://www.gnu.org/licenses/>
 
 from PyQt4.QtGui import QGraphicsScene, QPixmap
+
 from Data.DefaultKits import STEM_DOWN, STEM_UP
+
 
 PIXELS_PER_LINE = 8
 LEFT = 10
@@ -34,6 +36,7 @@ STEM_LENGTH = 30
 STEM_WIDTH = 1
 EFFECTS_Z = -15
 HEAD_Z = -10
+
 
 class QNotationScene(QGraphicsScene):
     """

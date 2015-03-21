@@ -23,16 +23,20 @@ Created on 31 Jul 2010
 """
 import sys
 import optparse
+
 from PyQt4.QtGui import QApplication
+
 import GUI.DBMainwindow
 import GUI.DBIcons
 import GUI.DBStartupDialog
 from DBVersion import APPNAME, DB_VERSION
 
+
 def main():
     import ctypes
+
     parser = optparse.OptionParser()
-    parser.add_option('--virgin', action = 'store_true')
+    parser.add_option('--virgin', action='store_true')
     opts, args = parser.parse_args()
     filename = None
     if len(args) > 0:
@@ -50,8 +54,8 @@ def main():
     GUI.DBIcons.initialiseIcons()
     app.setWindowIcon(GUI.DBIcons.getIcon("drumburp"))
     splash.exec_()
-    mainWindow = GUI.DBMainwindow.DrumBurp(fakeStartup = opts.virgin,
-                                           filename = filename)
+    mainWindow = GUI.DBMainwindow.DrumBurp(fakeStartup=opts.virgin,
+                                           filename=filename)
     mainWindow.setWindowTitle("DrumBurp v" + DB_VERSION)
     mainWindow.show()
     app.exec_()

@@ -27,15 +27,16 @@ import copy
 from DBConstants import DRUM_ABBR_WIDTH
 import DefaultKits
 
+
 class HeadData(object):
-    def __init__(self, midiNote = DefaultKits.DEFAULT_NOTE,
-                 midiVolume = DefaultKits.DEFAULT_VOLUME,
-                 effect = "normal",
-                 notationHead = "default",
-                 notationLine = 0,
-                 notationEffect = "none",
-                 stemDirection = DefaultKits.STEM_UP,
-                 shortcut = ""):
+    def __init__(self, midiNote=DefaultKits.DEFAULT_NOTE,
+                 midiVolume=DefaultKits.DEFAULT_VOLUME,
+                 effect="normal",
+                 notationHead="default",
+                 notationLine=0,
+                 notationEffect="none",
+                 stemDirection=DefaultKits.STEM_UP,
+                 shortcut=""):
         self.midiNote = midiNote
         self.midiVolume = midiVolume
         self.effect = effect
@@ -47,13 +48,13 @@ class HeadData(object):
 
     def write(self, noteHead, indenter):
         dataString = "%s %d,%d,%s,%s,%d,%s,%d,%s" % (noteHead, self.midiNote,
-                                                  self.midiVolume,
-                                                  self.effect,
-                                                  self.notationHead,
-                                                  self.notationLine,
-                                                  self.notationEffect,
-                                                  self.stemDirection,
-                                                  self.shortcut)
+                                                     self.midiVolume,
+                                                     self.effect,
+                                                     self.notationHead,
+                                                     self.notationLine,
+                                                     self.notationEffect,
+                                                     self.stemDirection,
+                                                     self.shortcut)
         indenter("NOTEHEAD", dataString)
 
     @classmethod
@@ -90,34 +91,33 @@ class HeadData(object):
         return nHead, nLine, nEffect, sDir
 
 
-
-_DEFAULTEFFECT = {"x":"normal",
-                  "X":"accent",
-                  "o":"normal",
-                  "O":"accent",
-                  "g":"ghost",
-                  "f":"flam",
-                  "d":"drag",
-                  "+":"choke",
-                  "#":"choke",
-                  "b":"normal"}
-
+_DEFAULTEFFECT = {"x": "normal",
+                  "X": "accent",
+                  "o": "normal",
+                  "O": "accent",
+                  "g": "ghost",
+                  "f": "flam",
+                  "d": "drag",
+                  "+": "choke",
+                  "#": "choke",
+                  "b": "normal"}
 
 
 class Drum(object):
     """
     classdocs
     """
-    def __init__(self, name, abbr, head, locked = False):
+
+    def __init__(self, name, abbr, head, locked=False):
         self.name = name
         self.abbr = abbr
         self._head = head
         self._noteHeads = []
         self._headData = {}
         self.locked = locked
-        assert(len(name) > 0)
-        assert(1 <= len(abbr) <= DRUM_ABBR_WIDTH)
-        assert(len(head) == 1)
+        assert (len(name) > 0)
+        assert (1 <= len(abbr) <= DRUM_ABBR_WIDTH)
+        assert (len(head) == 1)
 
     @property
     def head(self):
@@ -163,7 +163,7 @@ class Drum(object):
         if self._head == oldHead:
             self._head = head
 
-    def addNoteHead(self, head, headData = None):
+    def addNoteHead(self, head, headData=None):
         self._noteHeads.append(head)
         if headData is None:
             newHead = copy.deepcopy(self._headData[self.head])
@@ -172,11 +172,11 @@ class Drum(object):
             self._guessEffect(head)
             self.checkShortcuts()
         else:
-            assert(isinstance(headData, HeadData))
+            assert (isinstance(headData, HeadData))
             self._headData[head] = headData
 
     def _guessEffect(self, head):
-        assert(head in self._headData)
+        assert (head in self._headData)
         self._headData[head].effect = _DEFAULTEFFECT.get(head, "normal")
 
     def guessHeadData(self):
@@ -190,9 +190,9 @@ class Drum(object):
             notationHead = "default"
             notationLine = 0
             stemDir = DefaultKits.STEM_UP
-        headData = HeadData(midiNote, notationHead = notationHead,
-                            notationLine = notationLine,
-                            stemDirection = stemDir)
+        headData = HeadData(midiNote, notationHead=notationHead,
+                            notationLine=notationLine,
+                            stemDirection=stemDir)
         self._headData = {self._head: headData}
         self._guessEffect(self._head)
         for (extraHead,
@@ -207,11 +207,11 @@ class Drum(object):
             if newMidiVolume is None:
                 newMidiVolume = headData.midiVolume
             newData = HeadData(newMidi, newMidiVolume, newEffect,
-                               notationHead = newNotationHead,
-                               notationLine = notationLine,
-                               notationEffect = newNotationEffect,
-                               stemDirection = stemDir,
-                               shortcut = shortcut)
+                               notationHead=newNotationHead,
+                               notationLine=notationLine,
+                               notationEffect=newNotationEffect,
+                               stemDirection=stemDir,
+                               shortcut=shortcut)
             self.addNoteHead(extraHead, newData)
         self.checkShortcuts()
 
@@ -232,7 +232,7 @@ class Drum(object):
             idx = self._noteHeads.index(head)
         except ValueError:
             return
-        if(idx < 2):
+        if (idx < 2):
             return
         self._noteHeads[idx - 1:idx + 1] = self._noteHeads[idx:idx - 2:-1]
 
@@ -273,7 +273,6 @@ class Drum(object):
             for head in self:
                 headData = self.headData(head)
                 headData.write(head, indenter)
-
 
 
 def _guessMidiNote(abbr):

@@ -24,11 +24,13 @@ Created on 12 Dec 2010
 """
 
 from collections import defaultdict
+import copy
+
 from DBConstants import EMPTY_NOTE, BAR_TYPES
 from DBErrors import BadTimeError, TooManyBarLines
 from NotePosition import NotePosition
 from Data import MeasureCount
-import copy
+
 
 class _NoteDictionary(object):
     def __init__(self):
@@ -47,16 +49,16 @@ class _NoteDictionary(object):
 
     def iterNotesAtTime(self, noteTime):
         for index, head in self._notes[noteTime].iteritems():
-            yield (NotePosition(noteTime = noteTime,
-                                drumIndex = index),
-                       head)
+            yield (NotePosition(noteTime=noteTime,
+                                drumIndex=index),
+                   head)
 
     def iterNotesAndHeads(self):
         for noteTime in self.iterTimes():
             drumDict = self._notes[noteTime]
             for drumIndex, drumHead in drumDict.iteritems():
-                yield (NotePosition(noteTime = noteTime,
-                                   drumIndex = drumIndex),
+                yield (NotePosition(noteTime=noteTime,
+                                    drumIndex=drumIndex),
                        drumHead)
 
     def __contains__(self, noteTime):
@@ -104,6 +106,7 @@ class _NoteDictionary(object):
         self._noteTimes = []
         self._notesOnLine.clear()
 
+
 class MeasureInfo(object):
     def __init__(self):
         self.isRepeatEnd = False
@@ -112,12 +115,13 @@ class MeasureInfo(object):
         self.isLineBreak = False
         self.repeatCount = 1
 
+
 class Measure(object):
     """
     classdocs
     """
 
-    def __init__(self, width = 0):
+    def __init__(self, width=0):
         self._width = width
         self._notes = _NoteDictionary()
         self.startBar = BAR_TYPES["NORMAL_BAR"]
@@ -129,6 +133,7 @@ class Measure(object):
 
     def _getrepeatCount(self):
         return self._info.repeatCount
+
     def _setrepeatCount(self, value):
         if value != self._info.repeatCount:
             if self.isRepeatEnd():
@@ -136,8 +141,9 @@ class Measure(object):
             else:
                 self._info.repeatCount = 1
             self._runCallBack(NotePosition())
-    repeatCount = property(fget = _getrepeatCount,
-                         fset = _setrepeatCount)
+
+    repeatCount = property(fget=_getrepeatCount,
+                           fset=_setrepeatCount)
 
     def __len__(self):
         return self._width
@@ -212,7 +218,7 @@ class Measure(object):
         return self.noteAt(position.noteTime, position.drumIndex)
 
     def _checkValidNoteTime(self, noteTime):
-        if not(0 <= noteTime < len(self)):
+        if not (0 <= noteTime < len(self)):
             raise BadTimeError(noteTime)
 
     def _checkValidPosition(self, position):
@@ -245,7 +251,7 @@ class Measure(object):
             self.addNote(position, head)
 
     def _setWidth(self, newWidth):
-        assert(newWidth > 0)
+        assert (newWidth > 0)
         if newWidth == len(self):
             return
         self._width = newWidth
@@ -305,7 +311,7 @@ class Measure(object):
         else:
             return list(self.counter.count())
 
-    def pasteMeasure(self, other, copyMeasureDecorations = False):
+    def pasteMeasure(self, other, copyMeasureDecorations=False):
         oldMeasure = self.copyMeasure()
         self.clear()
         if other.counter is None:
@@ -352,7 +358,7 @@ class Measure(object):
             for pos, head in self:
                 indenter("NOTE %d,%d,%s" % (pos.noteTime, pos.drumIndex, head))
             endString = [name for name, value in BAR_TYPES.iteritems()
-                         if (self.endBar & value) == value ]
+                         if (self.endBar & value) == value]
             indenter("BARLINE %s" % ",".join(endString))
             if self.repeatCount != 1:
                 indenter("REPEAT_COUNT %d" % self.repeatCount)
@@ -369,8 +375,8 @@ class Measure(object):
             self.seenStartLine = False
             self.seenEndLine = False
             self._iterator = iterator
-            self.mapping = {"NO_BAR" : self.doNothing,
-                            "NORMAL_BAR" : self.doNothing,
+            self.mapping = {"NO_BAR": self.doNothing,
+                            "NORMAL_BAR": self.doNothing,
                             "REPEAT_START": measure.setRepeatStart,
                             "REPEAT_END": measure.setRepeatEnd,
                             "SECTION_END": measure.setSectionEnd,
@@ -394,8 +400,8 @@ class Measure(object):
 
     def _readNote(self, lineData):
         noteTime, drumIndex, head = lineData.split(",")
-        pos = NotePosition(noteTime = int(noteTime),
-                           drumIndex = int(drumIndex))
+        pos = NotePosition(noteTime=int(noteTime),
+                           drumIndex=int(drumIndex))
         self.addNote(pos, head)
 
     def _makeOldMeasure(self, lineData):

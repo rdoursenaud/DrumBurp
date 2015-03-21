@@ -23,6 +23,7 @@ Created on 23 Jan 2011
 
 """
 
+
 class ScoreMetaData(object):
     """
     classdocs
@@ -83,8 +84,8 @@ class ScoreMetaData(object):
             indenter("KITDATAVISIBLE", str(self.kitDataVisible))
             indenter("METADATAVISIBLE", str(self.metadataVisible))
             indenter("BEATCOUNTVISIBLE",
-                                      str(self.beatCountVisible))
+                     str(self.beatCountVisible))
             indenter("EMPTYLINESVISIBLE",
-                                      str(self.emptyLinesVisible))
+                     str(self.emptyLinesVisible))
             indenter("MEASURECOUNTSVISIBLE",
-                                      str(self.measureCountsVisible))
+                     str(self.measureCountsVisible))

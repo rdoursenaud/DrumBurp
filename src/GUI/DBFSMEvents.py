@@ -20,44 +20,57 @@
 
 @author: Mike
 """
+
+
 class FsmEvent(object):
     pass
 
+
 class _MouseEvent(FsmEvent):
-    def __init__(self, measure, note, screenPos = None):
+    def __init__(self, measure, note, screenPos=None):
         super(_MouseEvent, self).__init__()
         self.measure = measure
         self.note = note
         self.screenPos = screenPos
 
+
 class LeftPress(_MouseEvent):
     pass
+
 
 class RightPress(_MouseEvent):
     pass
 
+
 class MidPress(_MouseEvent):
     pass
+
 
 class MouseMove(_MouseEvent):
     pass
 
+
 class MouseRelease(_MouseEvent):
     pass
+
 
 class Escape(FsmEvent):
     pass
 
+
 class MenuSelect(FsmEvent):
-    def __init__(self, data = None):
+    def __init__(self, data=None):
         super(MenuSelect, self).__init__()
         self.data = data
+
 
 class MenuCancel(FsmEvent):
     pass
 
+
 class RepeatNotes(FsmEvent):
     pass
+
 
 class MeasureLineContext(FsmEvent):
     def __init__(self, prevMeasure, nextMeasure, endNote, startNote, screenPos):
@@ -68,16 +81,20 @@ class MeasureLineContext(FsmEvent):
         self.startNote = startNote
         self.screenPos = screenPos
 
+
 class StartPlaying(FsmEvent):
     pass
 
+
 class StopPlaying(FsmEvent):
     pass
+
 
 class _MeasureEvents(FsmEvent):
     def __init__(self, measurePosition):
         super(_MeasureEvents, self).__init__()
         self.measurePosition = measurePosition
+
 
 class EditMeasureProperties(_MeasureEvents):
     def __init__(self, counter, counterRegistry, measurePosition):
@@ -85,10 +102,12 @@ class EditMeasureProperties(_MeasureEvents):
         self.counter = counter
         self.counterRegistry = counterRegistry
 
+
 class SetAlternateEvent(_MeasureEvents):
     def __init__(self, alternateText, measurePosition):
         super(SetAlternateEvent, self).__init__(measurePosition)
         self.alternateText = alternateText
+
 
 class ChangeRepeatCount(_MeasureEvents):
     def __init__(self, repeatCount, measurePosition):

@@ -25,13 +25,14 @@ Created on 4 Apr 2012
 from __future__ import print_function
 from contextlib import contextmanager
 import collections
+import sys
+
 from Data.DrumKit import DrumKit
 from DBVersion import DB_VERSION
 
-import sys
 
 class LilyIndenter(object):
-    def __init__(self, spaces = 2):
+    def __init__(self, spaces=2):
         self._spaces = spaces
         self._level = 0
         self._handle = sys.stdout
@@ -49,9 +50,10 @@ class LilyIndenter(object):
         self._handle = handle
 
     def write(self, *args, **kwargs):
-        print(" " * self._level, end = '', file = self._handle)
+        print(" " * self._level, end='', file=self._handle)
         kwargs['file'] = self._handle
         print(*args, **kwargs)
+
 
 def makeLilyContext(opener, closer):
     def myLilyContext(indenter, context):
@@ -60,34 +62,45 @@ def makeLilyContext(opener, closer):
         yield
         indenter.decrease()
         indenter.write(closer)
+
     return myLilyContext
+
 
 LILY_CONTEXT = contextmanager(makeLilyContext("{", "}"))
 VOICE_CONTEXT = contextmanager(makeLilyContext("<<", ">>"))
 
+
 class LilypondProblem(RuntimeError):
     pass
+
 
 class TripletsProblem(LilypondProblem):
     """DrumBurp cannot yet set triplets in Lilypond"""
 
+
 class FiveSixthsProblem(LilypondProblem):
     """DrumBurp cannot set notes of length 5/6 beat."""
+
 
 class FiveEighthsProblem(LilypondProblem):
     """DrumBurp cannot set notes of length 5/8 beat."""
 
+
 class SevenEighthsProblem(LilypondProblem):
     """DrumBurp cannot set notes of length 7/8 beat."""
+
 
 class FiveTwelfthsProblem(LilypondProblem):
     """DrumBurp cannot set notes of length 5/12 beat."""
 
+
 class SevenTwelfthsProblem(LilypondProblem):
     """DrumBurp cannot set notes of length 7/12 beat."""
 
+
 class ElevenTwelfthsProblem(LilypondProblem):
     """DrumBurp cannot set notes of length 11/12 beat."""
+
 
 def lilyDuration(beat, ticks):
     dur = None
@@ -135,6 +148,7 @@ def lilyDuration(beat, ticks):
 def lilyString(inString):
     return '"%s"' % inString
 
+
 class LilyMeasure(object):
     _FLAM_STRING = (r"\override Stem #'length = #4 \acciaccatura{%s8} "
                     + r"\revert Stem #'length")
@@ -145,12 +159,12 @@ class LilyMeasure(object):
         self.measure = measure
         self.kit = kit
         self._beats = list(self.measure.counter.iterBeatTicks())
-        self._voices = {DrumKit.UP:[], DrumKit.DOWN:[]}
+        self._voices = {DrumKit.UP: [], DrumKit.DOWN: []}
         self._build()
 
 
     def _separateNotesByDirection(self):
-        notes = {DrumKit.UP:[], DrumKit.DOWN:[]}
+        notes = {DrumKit.UP: [], DrumKit.DOWN: []}
         for notePos, head in self.measure:
             direction = self.kit.getDirection(notePos.drumIndex, head)
             notes[direction].append((notePos, head))
@@ -161,7 +175,7 @@ class LilyMeasure(object):
         noteTimes = {}
         for direction in notes:
             timeSet = set(notePos.noteTime for (notePos, head) in
-                notes[direction])
+                          notes[direction])
             for tick in self.measure.counter.iterBeatTickPositions():
                 timeSet.add(tick)
             timeSet.add(len(self._beats))
@@ -174,7 +188,7 @@ class LilyMeasure(object):
         for direction, timeList in noteTimes.iteritems():
             durationDict = {}
             for thisTime, nextTime in zip(timeList[:-1],
-                timeList[1:]):
+                                          timeList[1:]):
                 unusedBeatNum, beat, tick_ = self._beats[thisTime]
                 numTicks = nextTime - thisTime
                 durationDict[thisTime] = lilyDuration(beat, numTicks)
@@ -184,7 +198,7 @@ class LilyMeasure(object):
 
     def _getLilyNotesAndEffects(self, notes):
         lilyNotes = {}
-        effects = {DrumKit.UP:{}, DrumKit.DOWN:{}}
+        effects = {DrumKit.UP: {}, DrumKit.DOWN: {}}
         for direction, timeList in notes.iteritems():
             lilyDict = {}
             effectsDict = collections.defaultdict(list)
@@ -278,7 +292,7 @@ class LilyMeasure(object):
     def _mergeWholeRests(self, direction):
         resting = False
         start = None
-        newRestLengths = {1: "4", 2: "2", 3:"2.", 4:"1"}
+        newRestLengths = {1: "4", 2: "2", 3: "2.", 4: "1"}
         newVoice = []
         for index, info in enumerate(self._voices[direction]):
             if info == "r4":
@@ -312,11 +326,13 @@ class LilyMeasure(object):
         voice = self._voices[DrumKit.DOWN]
         indenter(" ".join(voice))
 
+
 class LilyKit(object):
     _HEADS = {"default": "()",
               "harmonic black": "harmonic-black"}
-    _EFFECTS = {"open":'"open"',
-                "stopped":'"stopped"'}
+    _EFFECTS = {"open": '"open"',
+                "stopped": '"stopped"'}
+
     def __init__(self, kit):
         self._kit = kit
         self._lilyHeads = []
@@ -344,8 +360,8 @@ class LilyKit(object):
                     headCount += 1
                     lHead = sanAbbr + lily
                     lName = sanitized + lily
-                    ok = not(lHead in allLilyHeads or lName in allLilyNames
-                             or lHead in reservedNames)
+                    ok = not (lHead in allLilyHeads or lName in allLilyNames
+                              or lHead in reservedNames)
                 lilyHeads[head] = lHead
                 lilyNames[head] = lName
                 allLilyHeads.add(lHead)
@@ -362,24 +378,24 @@ class LilyKit(object):
         effect = headData.notationEffect
         return lilyHead, effect
 
-    def getDirection(self, drumIndex, head = None):
+    def getDirection(self, drumIndex, head=None):
         headData = self._kit[drumIndex].headData(head)
         return headData.stemDirection
 
     def write(self, handle):
-        print("drumPitchNames = #'(", end = '', file = handle)
+        print("drumPitchNames = #'(", end='', file=handle)
         for drumIndex, drum in enumerate(self._kit):
             for head in drum:
                 name = self._lilyNames[drumIndex][head]
-                print("   (%s . %s)" % (name, name), file = handle)
+                print("   (%s . %s)" % (name, name), file=handle)
         for drumIndex, drum in enumerate(self._kit):
             for head in drum:
                 name = self._lilyNames[drumIndex][head]
                 abbr = self._lilyHeads[drumIndex][head]
-                print("   (%s . %s)" % (abbr, name), file = handle)
-        print (")", file = handle)
-        print("", file = handle)
-        print("#(define dbdrums '(", file = handle)
+                print("   (%s . %s)" % (abbr, name), file=handle)
+        print(")", file=handle)
+        print("", file=handle)
+        print("#(define dbdrums '(", file=handle)
         for drumIndex, drum in enumerate(self._kit):
             for head in drum:
                 name = self._lilyNames[drumIndex][head]
@@ -393,41 +409,45 @@ class LilyKit(object):
                                             lilyNoteHead,
                                             lilyEffect,
                                             headData.notationLine),
-                      file = handle)
-        print("))", file = handle)
-        print ("", file = handle)
+                      file=handle)
+        print("))", file=handle)
+        print("", file=handle)
 
-_PAPER_SIZES = { "A0" : "a0",
-                 "A1" : "a1",
-                 "A2" : "a2",
-                 "A3" : "a3",
-                 "A4" : "a4",
-                 "A5" : "a5",
-                 "A6" : "a6",
-                 "A7" : "a7",
-                 "A8" : "a8",
-                 "A9" : "a9",
-                 "B0" : "b0",
-                 "B1" : "b1",
-                 "B10" : "b10",
-                 "B2" : "b2",
-                 "B3" : "b3",
-                 "B4" : "b4",
-                 "B5" : "b5",
-                 "B6" : "b6",
-                 "B7" : "b7",
-                 "B8" : "b8",
-                 "B9" : "b9",
-                 "C5E" : "c5",
-                 "Executive" : "executive",
-                 "Folio" : "folio",
-                 "Ledger" : "ledger",
-                 "Legal" : "legal",
-                 "Letter" : "letter",
-                 "Tabloid" : "tabloid" }
+
+_PAPER_SIZES = {"A0": "a0",
+                "A1": "a1",
+                "A2": "a2",
+                "A3": "a3",
+                "A4": "a4",
+                "A5": "a5",
+                "A6": "a6",
+                "A7": "a7",
+                "A8": "a8",
+                "A9": "a9",
+                "B0": "b0",
+                "B1": "b1",
+                "B10": "b10",
+                "B2": "b2",
+                "B3": "b3",
+                "B4": "b4",
+                "B5": "b5",
+                "B6": "b6",
+                "B7": "b7",
+                "B8": "b8",
+                "B9": "b9",
+                "C5E": "c5",
+                "Executive": "executive",
+                "Folio": "folio",
+                "Ledger": "ledger",
+                "Legal": "legal",
+                "Letter": "letter",
+                "Tabloid": "tabloid"}
+
 
 class BadPaperSize(LilypondProblem):
     """DrumBurp cannot create a Lilypond score on this paper size."""
+
+
 class LilypondScore(object):
     def __init__(self, score):
         self.score = score
@@ -548,7 +568,7 @@ class LilypondScore(object):
                               % lilyString("x%d" % measure.repeatCount))
             repeatCommands.append("end-repeat")
         if hasAlternate and (measure.isSectionEnd() or
-            measure.isRepeatEnd()):
+                                 measure.isRepeatEnd()):
             repeatCommands.append("(volta #f)")
             hasAlternate = False
         return hasAlternate

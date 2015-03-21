@@ -23,15 +23,19 @@ Created on 13 Oct 2012
 
 """
 
+from cStringIO import StringIO
+
 from PyQt4 import QtGui, QtCore
+
 from ui_defaultKitManager import Ui_DefaulKitManager
 from Data import DefaultKits, DrumKit, fileUtils
-from cStringIO import StringIO
+
 
 _IS_USER_KIT = QtCore.Qt.UserRole
 
+
 class QDefaultKitManager(Ui_DefaulKitManager, QtGui.QDialog):
-    def __init__(self, currentKit, parent = None):
+    def __init__(self, currentKit, parent=None):
         super(QDefaultKitManager, self).__init__(parent)
         self.setupUi(self)
         self._currentKit = currentKit
@@ -95,7 +99,7 @@ class QDefaultKitManager(Ui_DefaulKitManager, QtGui.QDialog):
         name, ok = QtGui.QInputDialog.getText(self, "Kit name",
                                               "Enter a name for the "
                                               "new default kit",
-                                              text = "New kit")
+                                              text="New kit")
         if not ok:
             return
         if self._settings.contains(name):
@@ -136,6 +140,7 @@ class QDefaultKitManager(Ui_DefaulKitManager, QtGui.QDialog):
 def main():
     from PyQt4.QtGui import QApplication
     import sys
+
     app = QApplication(sys.argv)
     app.setOrganizationName("Whatang Software")
     app.setOrganizationDomain("whatang.org")
@@ -146,6 +151,7 @@ def main():
     app.exec_()
     if dialog.result():
         print dialog.getKit()
+
 
 if __name__ == "__main__":
     main()

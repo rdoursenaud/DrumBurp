@@ -65,9 +65,10 @@ class Staff(object):
         def wrappedCallBack(position):
             position.measureIndex = measureIndex
             self._runCallBack(position)
+
         measure.setCallBack(wrappedCallBack)
 
-    def _isValidPosition(self, position, afterOk = False):
+    def _isValidPosition(self, position, afterOk=False):
         if not (0 <= position.measureIndex < self.numMeasures()):
             if not (afterOk and position.measureIndex == self.numMeasures()):
                 raise BadTimeError(position)
@@ -106,7 +107,7 @@ class Staff(object):
         self._isValidPosition(position)
         return self[position.measureIndex].copyMeasure()
 
-    def pasteMeasure(self, position, notes, copyMeasureDecorations = False):
+    def pasteMeasure(self, position, notes, copyMeasureDecorations=False):
         self._isValidPosition(position)
         self._visibleLines = {}
         return self[position.measureIndex].pasteMeasure(notes,

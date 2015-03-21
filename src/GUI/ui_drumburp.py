@@ -23,6 +23,7 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
+
 class Ui_DrumBurpWindow(object):
     def setupUi(self, DrumBurpWindow):
         DrumBurpWindow.setObjectName(_fromUtf8("DrumBurpWindow"))
@@ -33,7 +34,7 @@ class Ui_DrumBurpWindow(object):
         DrumBurpWindow.setWindowIcon(icon)
         DrumBurpWindow.setAnimated(True)
         DrumBurpWindow.setDockNestingEnabled(True)
-        DrumBurpWindow.setDockOptions(QtGui.QMainWindow.AllowNestedDocks|QtGui.QMainWindow.AnimatedDocks)
+        DrumBurpWindow.setDockOptions(QtGui.QMainWindow.AllowNestedDocks | QtGui.QMainWindow.AnimatedDocks)
         self.centralwidget = QtGui.QWidget(DrumBurpWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.verticalLayout = QtGui.QVBoxLayout(self.centralwidget)
@@ -72,7 +73,7 @@ class Ui_DrumBurpWindow(object):
         sizePolicy.setHeightForWidth(self.widthSpinBox.sizePolicy().hasHeightForWidth())
         self.widthSpinBox.setSizePolicy(sizePolicy)
         self.widthSpinBox.setFrame(True)
-        self.widthSpinBox.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.widthSpinBox.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
         self.widthSpinBox.setButtonSymbols(QtGui.QAbstractSpinBox.UpDownArrows)
         self.widthSpinBox.setMinimum(10)
         self.widthSpinBox.setMaximum(1000)
@@ -140,12 +141,12 @@ class Ui_DrumBurpWindow(object):
         self.horizontalLayout = QtGui.QHBoxLayout(self.lilypondGroupBox)
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
         self.lilyPagesBox = QtGui.QSpinBox(self.lilypondGroupBox)
-        self.lilyPagesBox.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.lilyPagesBox.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
         self.lilyPagesBox.setMaximum(1000)
         self.lilyPagesBox.setObjectName(_fromUtf8("lilyPagesBox"))
         self.horizontalLayout.addWidget(self.lilyPagesBox)
         self.lilypondSize = QtGui.QSpinBox(self.lilypondGroupBox)
-        self.lilypondSize.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.lilypondSize.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
         self.lilypondSize.setMinimum(8)
         self.lilypondSize.setMaximum(32)
         self.lilypondSize.setProperty("value", 20)
@@ -337,7 +338,8 @@ class Ui_DrumBurpWindow(object):
         DrumBurpWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.MIDIToolBar)
         self.actionQuit = QtGui.QAction(DrumBurpWindow)
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/system-log-out.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/system-log-out.png")), QtGui.QIcon.Normal,
+                        QtGui.QIcon.Off)
         self.actionQuit.setIcon(icon2)
         self.actionQuit.setObjectName(_fromUtf8("actionQuit"))
         self.actionNew = QtGui.QAction(DrumBurpWindow)
@@ -347,7 +349,8 @@ class Ui_DrumBurpWindow(object):
         self.actionNew.setObjectName(_fromUtf8("actionNew"))
         self.actionLoad = QtGui.QAction(DrumBurpWindow)
         icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/document-open.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon4.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/document-open.png")), QtGui.QIcon.Normal,
+                        QtGui.QIcon.Off)
         self.actionLoad.setIcon(icon4)
         self.actionLoad.setObjectName(_fromUtf8("actionLoad"))
         self.actionSave = QtGui.QAction(DrumBurpWindow)
@@ -373,7 +376,8 @@ class Ui_DrumBurpWindow(object):
         self.actionFileToolbarIsVisible.setObjectName(_fromUtf8("actionFileToolbarIsVisible"))
         self.actionFitInWindow = QtGui.QAction(DrumBurpWindow)
         icon8 = QtGui.QIcon()
-        icon8.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/video-display.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon8.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/video-display.png")), QtGui.QIcon.Normal,
+                        QtGui.QIcon.Off)
         self.actionFitInWindow.setIcon(icon8)
         self.actionFitInWindow.setObjectName(_fromUtf8("actionFitInWindow"))
         self.actionToolbars = QtGui.QAction(DrumBurpWindow)
@@ -384,12 +388,14 @@ class Ui_DrumBurpWindow(object):
         self.actionPrint = QtGui.QAction(DrumBurpWindow)
         self.actionPrint.setEnabled(True)
         icon9 = QtGui.QIcon()
-        icon9.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/document-print.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon9.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/document-print.png")), QtGui.QIcon.Normal,
+                        QtGui.QIcon.Off)
         self.actionPrint.setIcon(icon9)
         self.actionPrint.setObjectName(_fromUtf8("actionPrint"))
         self.actionWhatsThis = QtGui.QAction(DrumBurpWindow)
         icon10 = QtGui.QIcon()
-        icon10.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/help-browser.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon10.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/help-browser.png")), QtGui.QIcon.Normal,
+                         QtGui.QIcon.Off)
         self.actionWhatsThis.setIcon(icon10)
         self.actionWhatsThis.setObjectName(_fromUtf8("actionWhatsThis"))
         self.actionUndo = QtGui.QAction(DrumBurpWindow)
@@ -420,27 +426,31 @@ class Ui_DrumBurpWindow(object):
         self.actionShowEmptyLines.setCheckable(True)
         self.actionShowEmptyLines.setChecked(True)
         icon14 = QtGui.QIcon()
-        icon14.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/format-justify-fill.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon14.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/format-justify-fill.png")), QtGui.QIcon.Normal,
+                         QtGui.QIcon.Off)
         self.actionShowEmptyLines.setIcon(icon14)
         self.actionShowEmptyLines.setObjectName(_fromUtf8("actionShowEmptyLines"))
         self.actionShowDrumKey = QtGui.QAction(DrumBurpWindow)
         self.actionShowDrumKey.setCheckable(True)
         icon15 = QtGui.QIcon()
-        icon15.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/1299815323_HAL-9000 Brain Room Key.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon15.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/1299815323_HAL-9000 Brain Room Key.png")),
+                         QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionShowDrumKey.setIcon(icon15)
         self.actionShowDrumKey.setObjectName(_fromUtf8("actionShowDrumKey"))
         self.actionShowScoreInfo = QtGui.QAction(DrumBurpWindow)
         self.actionShowScoreInfo.setCheckable(True)
         self.actionShowScoreInfo.setChecked(True)
         icon16 = QtGui.QIcon()
-        icon16.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/applications-multimedia.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon16.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/applications-multimedia.png")), QtGui.QIcon.Normal,
+                         QtGui.QIcon.Off)
         self.actionShowScoreInfo.setIcon(icon16)
         self.actionShowScoreInfo.setObjectName(_fromUtf8("actionShowScoreInfo"))
         self.actionShowBeatCount = QtGui.QAction(DrumBurpWindow)
         self.actionShowBeatCount.setCheckable(True)
         self.actionShowBeatCount.setChecked(True)
         icon17 = QtGui.QIcon()
-        icon17.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/1299814882_Black_Numbered-List.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon17.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/1299814882_Black_Numbered-List.png")),
+                         QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionShowBeatCount.setIcon(icon17)
         self.actionShowBeatCount.setObjectName(_fromUtf8("actionShowBeatCount"))
         self.actionFitPage = QtGui.QAction(DrumBurpWindow)
@@ -451,15 +461,19 @@ class Ui_DrumBurpWindow(object):
         self.actionPlayScore = QtGui.QAction(DrumBurpWindow)
         self.actionPlayScore.setCheckable(True)
         icon19 = QtGui.QIcon()
-        icon19.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/media-playback-start.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        icon19.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/media-playback-stop.png")), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        icon19.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/media-playback-start.png")), QtGui.QIcon.Normal,
+                         QtGui.QIcon.Off)
+        icon19.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/media-playback-stop.png")), QtGui.QIcon.Normal,
+                         QtGui.QIcon.On)
         self.actionPlayScore.setIcon(icon19)
         self.actionPlayScore.setObjectName(_fromUtf8("actionPlayScore"))
         self.actionMuteNotes = QtGui.QAction(DrumBurpWindow)
         self.actionMuteNotes.setCheckable(True)
         icon20 = QtGui.QIcon()
-        icon20.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/audio-volume-medium.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        icon20.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/audio-volume-muted.png")), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        icon20.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/audio-volume-medium.png")), QtGui.QIcon.Normal,
+                         QtGui.QIcon.Off)
+        icon20.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/audio-volume-muted.png")), QtGui.QIcon.Normal,
+                         QtGui.QIcon.On)
         self.actionMuteNotes.setIcon(icon20)
         self.actionMuteNotes.setObjectName(_fromUtf8("actionMuteNotes"))
         self.actionExportMIDI = QtGui.QAction(DrumBurpWindow)
@@ -473,15 +487,19 @@ class Ui_DrumBurpWindow(object):
         self.actionLoopBars = QtGui.QAction(DrumBurpWindow)
         self.actionLoopBars.setCheckable(True)
         icon22 = QtGui.QIcon()
-        icon22.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/arrow-repeat.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        icon22.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/media-playback-stop.png")), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        icon22.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/arrow-repeat.png")), QtGui.QIcon.Normal,
+                         QtGui.QIcon.Off)
+        icon22.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/media-playback-stop.png")), QtGui.QIcon.Normal,
+                         QtGui.QIcon.On)
         self.actionLoopBars.setIcon(icon22)
         self.actionLoopBars.setObjectName(_fromUtf8("actionLoopBars"))
         self.actionPlayOnce = QtGui.QAction(DrumBurpWindow)
         self.actionPlayOnce.setCheckable(True)
         icon23 = QtGui.QIcon()
-        icon23.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/arrow-repeat-once.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        icon23.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/media-playback-stop.png")), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        icon23.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/arrow-repeat-once.png")), QtGui.QIcon.Normal,
+                         QtGui.QIcon.Off)
+        icon23.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/media-playback-stop.png")), QtGui.QIcon.Normal,
+                         QtGui.QIcon.On)
         self.actionPlayOnce.setIcon(icon23)
         self.actionPlayOnce.setObjectName(_fromUtf8("actionPlayOnce"))
         self.actionCopyMeasures = QtGui.QAction(DrumBurpWindow)
@@ -511,7 +529,8 @@ class Ui_DrumBurpWindow(object):
         self.actionOnlineManual.setObjectName(_fromUtf8("actionOnlineManual"))
         self.actionExportLilypond = QtGui.QAction(DrumBurpWindow)
         icon28 = QtGui.QIcon()
-        icon28.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/lilypond-icon.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon28.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/lilypond-icon.png")), QtGui.QIcon.Normal,
+                         QtGui.QIcon.Off)
         self.actionExportLilypond.setIcon(icon28)
         self.actionExportLilypond.setObjectName(_fromUtf8("actionExportLilypond"))
         self.actionCheckForUpdates = QtGui.QAction(DrumBurpWindow)
@@ -522,7 +541,8 @@ class Ui_DrumBurpWindow(object):
         self.actionShowMeasureCounts = QtGui.QAction(DrumBurpWindow)
         self.actionShowMeasureCounts.setCheckable(True)
         icon29 = QtGui.QIcon()
-        icon29.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/accessories-calculator.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon29.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icons/Icons/accessories-calculator.png")), QtGui.QIcon.Normal,
+                         QtGui.QIcon.Off)
         self.actionShowMeasureCounts.setIcon(icon29)
         self.actionShowMeasureCounts.setObjectName(_fromUtf8("actionShowMeasureCounts"))
         self.menuFile.addAction(self.actionNew)
@@ -600,41 +620,75 @@ class Ui_DrumBurpWindow(object):
         self.MIDIToolBar.addAction(self.actionMuteNotes)
 
         self.retranslateUi(DrumBurpWindow)
-        QtCore.QObject.connect(self.actionFileToolbarIsVisible, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.fileToolBar.setVisible)
-        QtCore.QObject.connect(self.fileToolBar, QtCore.SIGNAL(_fromUtf8("visibilityChanged(bool)")), self.actionFileToolbarIsVisible.setChecked)
-        QtCore.QObject.connect(self.displayToolBar, QtCore.SIGNAL(_fromUtf8("visibilityChanged(bool)")), self.actionDisplayToolBarIsVisible.setChecked)
-        QtCore.QObject.connect(self.actionDisplayToolBarIsVisible, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.displayToolBar.setVisible)
+        QtCore.QObject.connect(self.actionFileToolbarIsVisible, QtCore.SIGNAL(_fromUtf8("toggled(bool)")),
+                               self.fileToolBar.setVisible)
+        QtCore.QObject.connect(self.fileToolBar, QtCore.SIGNAL(_fromUtf8("visibilityChanged(bool)")),
+                               self.actionFileToolbarIsVisible.setChecked)
+        QtCore.QObject.connect(self.displayToolBar, QtCore.SIGNAL(_fromUtf8("visibilityChanged(bool)")),
+                               self.actionDisplayToolBarIsVisible.setChecked)
+        QtCore.QObject.connect(self.actionDisplayToolBarIsVisible, QtCore.SIGNAL(_fromUtf8("toggled(bool)")),
+                               self.displayToolBar.setVisible)
         QtCore.QObject.connect(self.actionQuit, QtCore.SIGNAL(_fromUtf8("triggered()")), DrumBurpWindow.close)
-        QtCore.QObject.connect(self.actionExportToolBarIsVisible, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.exportToolBar.setVisible)
-        QtCore.QObject.connect(self.exportToolBar, QtCore.SIGNAL(_fromUtf8("visibilityChanged(bool)")), self.actionExportToolBarIsVisible.setChecked)
-        QtCore.QObject.connect(self.actionHelpToolBarIsVisible, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.helpToolBar.setVisible)
-        QtCore.QObject.connect(self.helpToolBar, QtCore.SIGNAL(_fromUtf8("visibilityChanged(bool)")), self.actionHelpToolBarIsVisible.setChecked)
-        QtCore.QObject.connect(self.fontDock, QtCore.SIGNAL(_fromUtf8("visibilityChanged(bool)")), self.actionDisplayOptionsIsVisible.setChecked)
-        QtCore.QObject.connect(self.actionDisplayOptionsIsVisible, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.fontDock.setVisible)
-        QtCore.QObject.connect(self.fontComboBox, QtCore.SIGNAL(_fromUtf8("currentFontChanged(QFont)")), self.scoreView.setFont)
-        QtCore.QObject.connect(self.noteSizeSpinBox, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.scoreView.setNoteFontSize)
-        QtCore.QObject.connect(self.sectionFontSizeSpinbox, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.scoreView.setSectionFontSize)
-        QtCore.QObject.connect(self.sectionFontCombo, QtCore.SIGNAL(_fromUtf8("currentFontChanged(QFont)")), self.scoreView.setSectionFont)
-        QtCore.QObject.connect(self.metadataFontCombo, QtCore.SIGNAL(_fromUtf8("currentFontChanged(QFont)")), self.scoreView.setMetadataFont)
-        QtCore.QObject.connect(self.metadataFontSizeSpinbox, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.scoreView.setMetadataFontSize)
-        QtCore.QObject.connect(self.actionShowScoreInfo, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.scoreView.setMetadataVisible)
-        QtCore.QObject.connect(self.actionShowDrumKey, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.scoreView.setKitDataVisible)
-        QtCore.QObject.connect(self.actionShowEmptyLines, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.scoreView.setEmptyLinesVisible)
-        QtCore.QObject.connect(self.actionShowBeatCount, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.scoreView.setBeatCountVisible)
-        QtCore.QObject.connect(self.actionShowScoreInfo, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.metadataFontCombo.setEnabled)
-        QtCore.QObject.connect(self.actionShowScoreInfo, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.metadataFontSizeSpinbox.setEnabled)
-        QtCore.QObject.connect(self.widthSpinBox, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.scoreView.setWidth)
-        QtCore.QObject.connect(self.lineSpaceSlider, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.scoreView.systemSpacingChanged)
-        QtCore.QObject.connect(self.scoreView, QtCore.SIGNAL(_fromUtf8("widthChanged(int)")), self.widthSpinBox.setValue)
-        QtCore.QObject.connect(self.fontsButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.actionDisplayOptionsIsVisible.trigger)
-        QtCore.QObject.connect(self.actionDisplayOptionsIsVisible, QtCore.SIGNAL(_fromUtf8("triggered()")), self.fontDock.raise_)
-        QtCore.QObject.connect(self.sectionNavigator, QtCore.SIGNAL(_fromUtf8("currentIndexChanged(int)")), self.scoreView.showSection)
-        QtCore.QObject.connect(self.actionMIDIToolBarIsVisible, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.MIDIToolBar.setVisible)
-        QtCore.QObject.connect(self.MIDIToolBar, QtCore.SIGNAL(_fromUtf8("visibilityChanged(bool)")), self.actionMIDIToolBarIsVisible.setChecked)
-        QtCore.QObject.connect(self.lilypondSize, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.scoreView.setLilypondSize)
-        QtCore.QObject.connect(self.lilyPagesBox, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.scoreView.setLilypondPages)
-        QtCore.QObject.connect(self.lilyFillButton, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.scoreView.setLilyFill)
-        QtCore.QObject.connect(self.actionShowMeasureCounts, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.scoreView.setMeasureCountsVisible)
+        QtCore.QObject.connect(self.actionExportToolBarIsVisible, QtCore.SIGNAL(_fromUtf8("toggled(bool)")),
+                               self.exportToolBar.setVisible)
+        QtCore.QObject.connect(self.exportToolBar, QtCore.SIGNAL(_fromUtf8("visibilityChanged(bool)")),
+                               self.actionExportToolBarIsVisible.setChecked)
+        QtCore.QObject.connect(self.actionHelpToolBarIsVisible, QtCore.SIGNAL(_fromUtf8("toggled(bool)")),
+                               self.helpToolBar.setVisible)
+        QtCore.QObject.connect(self.helpToolBar, QtCore.SIGNAL(_fromUtf8("visibilityChanged(bool)")),
+                               self.actionHelpToolBarIsVisible.setChecked)
+        QtCore.QObject.connect(self.fontDock, QtCore.SIGNAL(_fromUtf8("visibilityChanged(bool)")),
+                               self.actionDisplayOptionsIsVisible.setChecked)
+        QtCore.QObject.connect(self.actionDisplayOptionsIsVisible, QtCore.SIGNAL(_fromUtf8("toggled(bool)")),
+                               self.fontDock.setVisible)
+        QtCore.QObject.connect(self.fontComboBox, QtCore.SIGNAL(_fromUtf8("currentFontChanged(QFont)")),
+                               self.scoreView.setFont)
+        QtCore.QObject.connect(self.noteSizeSpinBox, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")),
+                               self.scoreView.setNoteFontSize)
+        QtCore.QObject.connect(self.sectionFontSizeSpinbox, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")),
+                               self.scoreView.setSectionFontSize)
+        QtCore.QObject.connect(self.sectionFontCombo, QtCore.SIGNAL(_fromUtf8("currentFontChanged(QFont)")),
+                               self.scoreView.setSectionFont)
+        QtCore.QObject.connect(self.metadataFontCombo, QtCore.SIGNAL(_fromUtf8("currentFontChanged(QFont)")),
+                               self.scoreView.setMetadataFont)
+        QtCore.QObject.connect(self.metadataFontSizeSpinbox, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")),
+                               self.scoreView.setMetadataFontSize)
+        QtCore.QObject.connect(self.actionShowScoreInfo, QtCore.SIGNAL(_fromUtf8("toggled(bool)")),
+                               self.scoreView.setMetadataVisible)
+        QtCore.QObject.connect(self.actionShowDrumKey, QtCore.SIGNAL(_fromUtf8("toggled(bool)")),
+                               self.scoreView.setKitDataVisible)
+        QtCore.QObject.connect(self.actionShowEmptyLines, QtCore.SIGNAL(_fromUtf8("toggled(bool)")),
+                               self.scoreView.setEmptyLinesVisible)
+        QtCore.QObject.connect(self.actionShowBeatCount, QtCore.SIGNAL(_fromUtf8("toggled(bool)")),
+                               self.scoreView.setBeatCountVisible)
+        QtCore.QObject.connect(self.actionShowScoreInfo, QtCore.SIGNAL(_fromUtf8("toggled(bool)")),
+                               self.metadataFontCombo.setEnabled)
+        QtCore.QObject.connect(self.actionShowScoreInfo, QtCore.SIGNAL(_fromUtf8("toggled(bool)")),
+                               self.metadataFontSizeSpinbox.setEnabled)
+        QtCore.QObject.connect(self.widthSpinBox, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")),
+                               self.scoreView.setWidth)
+        QtCore.QObject.connect(self.lineSpaceSlider, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")),
+                               self.scoreView.systemSpacingChanged)
+        QtCore.QObject.connect(self.scoreView, QtCore.SIGNAL(_fromUtf8("widthChanged(int)")),
+                               self.widthSpinBox.setValue)
+        QtCore.QObject.connect(self.fontsButton, QtCore.SIGNAL(_fromUtf8("clicked()")),
+                               self.actionDisplayOptionsIsVisible.trigger)
+        QtCore.QObject.connect(self.actionDisplayOptionsIsVisible, QtCore.SIGNAL(_fromUtf8("triggered()")),
+                               self.fontDock.raise_)
+        QtCore.QObject.connect(self.sectionNavigator, QtCore.SIGNAL(_fromUtf8("currentIndexChanged(int)")),
+                               self.scoreView.showSection)
+        QtCore.QObject.connect(self.actionMIDIToolBarIsVisible, QtCore.SIGNAL(_fromUtf8("toggled(bool)")),
+                               self.MIDIToolBar.setVisible)
+        QtCore.QObject.connect(self.MIDIToolBar, QtCore.SIGNAL(_fromUtf8("visibilityChanged(bool)")),
+                               self.actionMIDIToolBarIsVisible.setChecked)
+        QtCore.QObject.connect(self.lilypondSize, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")),
+                               self.scoreView.setLilypondSize)
+        QtCore.QObject.connect(self.lilyPagesBox, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")),
+                               self.scoreView.setLilypondPages)
+        QtCore.QObject.connect(self.lilyFillButton, QtCore.SIGNAL(_fromUtf8("toggled(bool)")),
+                               self.scoreView.setLilyFill)
+        QtCore.QObject.connect(self.actionShowMeasureCounts, QtCore.SIGNAL(_fromUtf8("toggled(bool)")),
+                               self.scoreView.setMeasureCountsVisible)
         QtCore.QMetaObject.connectSlotsByName(DrumBurpWindow)
         DrumBurpWindow.setTabOrder(self.lineSpaceSlider, self.fontsButton)
         DrumBurpWindow.setTabOrder(self.fontsButton, self.sectionNavigator)
@@ -983,6 +1037,7 @@ class Ui_DrumBurpWindow(object):
         self.actionShowMeasureCounts.setToolTip(_translate("DrumBurpWindow", "Show/Hide Measure Indexes", None))
         self.actionShowMeasureCounts.setStatusTip(_translate("DrumBurpWindow", "Show/Hide Measure Indexes", None))
         self.actionShowMeasureCounts.setWhatsThis(_translate("DrumBurpWindow", "Show/Hide Measure Indexes", None))
+
 
 from Widgets.ScoreView_plugin import ScoreView
 import DrumBurp_rc

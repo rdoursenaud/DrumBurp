@@ -24,6 +24,7 @@ Created on 13 Mar 2011
 
 from QGraphicsListData import QGraphicsListData
 
+
 class QKitData(QGraphicsListData):
     """
     classdocs

@@ -27,6 +27,7 @@ from cStringIO import StringIO
 
 from Data import FontOptions, fileUtils
 
+
 class TestFontOptions(unittest.TestCase):
     def testWrite(self):
         options = FontOptions.FontOptions()
@@ -63,8 +64,6 @@ class TestFontOptions(unittest.TestCase):
         self.assertEqual(options.sectionFontSize, 12)
         self.assertEqual(options.metadataFont, "metafont")
         self.assertEqual(options.metadataFontSize, 14)
-
-
 
 
 if __name__ == "__main__":

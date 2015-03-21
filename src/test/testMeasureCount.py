@@ -28,6 +28,7 @@ from cStringIO import StringIO
 
 from Data import MeasureCount, Counter, Beat, fileUtils, DBErrors
 
+
 class TestSimple(unittest.TestCase):
     my_counter = Counter.Counter(Counter.BEAT_COUNT + "e+a")
     count = MeasureCount.makeSimpleCount(my_counter, 4)
@@ -113,6 +114,7 @@ class TestSimple(unittest.TestCase):
                           "    COUNT |^e+a|",
                           "  BEAT_END",
                           "COUNT_INFO_END"])
+
 
 class TestComplex(unittest.TestCase):
     counter1 = Counter.Counter(Counter.BEAT_COUNT + "e+a")
@@ -217,6 +219,7 @@ class TestComplex(unittest.TestCase):
                           "  BEAT_END",
                           "COUNT_INFO_END"])
 
+
 class TestRead(unittest.TestCase):
     def testReadSimple(self):
         data = """COUNT_INFO_START
@@ -309,12 +312,14 @@ class TestRead(unittest.TestCase):
         count = MeasureCount.MeasureCount()
         self.assertRaises(DBErrors.InvalidPositiveInteger, count.read, iterator)
 
+
 class TestCounterMaker(unittest.TestCase):
     def testMake(self):
         count = MeasureCount.counterMaker(4, 16)
         self.assert_(isinstance(count, MeasureCount.MeasureCount))
         self.assert_(count.isSimpleCount())
         self.assertEqual(len(count), 16)
+
 
 class TestTimeSigs(unittest.TestCase):
     sixteenths = Counter.Counter(Counter.BEAT_COUNT + "e+a")

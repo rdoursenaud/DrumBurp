@@ -58,7 +58,7 @@ jobs:
       - name: "Get version number"
         run: echo "::set-env name=DB_VERSION::$(cat VERSION)"
       - name: Get installer
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v4.1.7
         with:
           name: db_windows
       - name: Install Windows exe
@@ -107,7 +107,7 @@ jobs:
     if: github.ref != 'refs/heads/master'
     steps:
       - name: Get Linux binary
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v4.1.7
         with:
           name: db_linux
       - name: Test Linux binary
@@ -134,7 +134,7 @@ jobs:
           draft: false
           prerelease: false
       - name: Get Windows installer
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v4.1.7
         with:
           name: db_windows
       - name: Release Windows
@@ -147,7 +147,7 @@ jobs:
           asset_name: "DrumBurp-${{ env.DB_VERSION }}-Windows-setup.exe"
           asset_content_type: application/octet-stream
       - name: Get Linux binary
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v4.1.7
         with:
           name: db_linux
       - name: Release Linux
